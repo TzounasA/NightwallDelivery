@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BASIC -->
+    <color name="colorPrimaryLight">#b8211c</color>
+    <color name="colorPrimary">#8b0305</color>
+    <color name="colorPrimaryDark">#590203</color>
+
+    <color name="colorAccentLight">#b8211c</color>
+    <color name="colorAccent">#8b0305</color>
+
+    <color name="colorSurface">#fff</color>
+    <color name="colorBackground">#eee</color>
+    <color name="colorBackgroundColor">#f4cd64</color>
+    <color name="colorError">#D70508</color>
+
+    <color name="onPrimary">@color/white</color>
+    <color name="onSecondary">@color/white</color>
+    <color name="onError">@color/white</color>
+    <color name="onSurface">@color/black_87</color>
+    <color name="onBackground">@color/black_87</color>
+
+
+
+    <!-- WITH OPACITY -->
+    <color name="colorPrimary10">#288b0305</color>
+    <color name="colorPrimary20">#4F8b0305</color>
+    <color name="colorPrimary35">#598b0305</color>
+    <color name="colorPrimary54">#8A8b0305</color>
+
+    <color name="colorAccentLight10">#28b8211c</color>
+    <color name="colorAccentLight20">#4fb8211c</color>
+    <color name="colorAccentLight30">#66b8211c</color>
+
+    <color name="colorAccent10">#288b0305</color>
+    <color name="colorAccent20">#4f8b0305</color>
+    <color name="colorAccent54">#8A8b0305</color>
+
+    <color name="colorError10">#28D70508</color>
+    <color name="colorError20">#4fD70508</color>
+    <color name="colorError50">#80D70508</color>
+
+    <color name="onBackground_70">#B2000000</color>
+    <color name="onPrimary54">#8AFFFFFF</color>
+    <color name="onPrimary70">#DFFFFFFF</color>
+    <color name="onSecondary54">#8AFFFFFF</color>
+
+
+    <!-- EXTRA -->
+    <color name="white">#ffffff</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_54">#8Affffff</color>
+    <color name="white_20">#33ffffff</color>
+    <color name="white_10">#1Affffff</color>
+    <color name="white_05">#0Dffffff</color>
+
+    <color name="gray600">#FF757575</color>
+
+    <color name="black">#000</color>
+    <color name="black_87">#DF000000</color>
+    <color name="black_54">#8A000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_10">#1A000000</color>
+    <color name="black_05">#0D000000</color>
+</resources>

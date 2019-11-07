@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="edit_business_settings_title">Διαχείριση</string>
+    <string name="edit_business_settings_description">Επεξεργαστείτε τις ρυθμίσεις του καταστήματος</string>
+    <string name="edit_templates_title">Templates</string>
+    <string name="edit_templates_description">Δημιουργείστε templates προϊόντων</string>
+    <string name="edit_menu_title">Επεξεργασία Καταλόγου</string>
+    <string name="edit_menu_description">Προσαρμώστε το μενού του καταστήματος</string>
+
+
+    <string name="business_settings_basics">Βασικά</string>
+    <string name="business_settings_contact">Επικοινωνία</string>
+    <string name="business_settings_social_media">Social media</string>
+
+    <string name="auto_operation">Αυτόματη διαχείριση λειτουργίας</string>
+    <string name="auto_operation_body">Ελέξτε αν το κατάστημα θα φαίνεται ανοιχτό βάση του παραπάνω ωραρίου</string>
+
+    <string name="edit_address">Διεύθυνση</string>
+    <string name="edit_facebook">Facebook username</string>
+    <string name="edit_instagram">Instagram username</string>
+    <string name="edit_email">E-mail</string>
+    <string name="edit_phone">Τηλέφωνο</string>
+    <string name="edit_website">Website</string>
+
+
+
+
+
+    <!-- DRAWER -->
+    <string name="management">Διαχείρηση</string>
+    <string name="orders">Παραγγελίες</string>
+    <string name="users">Χρήστες</string>
+    <string name="stats">Στατιστικά</string>
+
+
+    <!-- EDIT MENU -->
+    <string name="add_image">ΠΡΟΣΘΕΣΤΕ ΕΙΚΟΝΑ</string>
+    <string name="change_image">ΑΛΛΑΓΗ ΕΙΚΟΝΑΣ</string>
+    <string name="delete_category_cap">ΔΙΑΓΡΑΦΗ ΚΑΤΗΓΟΡΙΑΣ</string>
+    <string name="delete_item_cap">ΔΙΑΓΡΑΦΗ ΠΡΟΪΟΝΤΟΣ</string>
+    <string name="delete_option_cap">ΔΙΑΓΡΑΦΗ ΕΠΙΛΟΓΗΣ</string>
+    <string name="priority">Προτεραιότητα</string>
+    <string name="title">Τίτλος</string>
+    <string name="description">Περιγραφή</string>
+    <string name="no_description">Χωρίς περιγραφή</string>
+    <string name="price">Τιμή</string>
+    <string name="itemsDiscount">Έκπτωση</string>
+    <string name="type">Είδος:</string>
+    <string name="dot_for_comma">Τελεία για υποδιαστολή</string>
+    <string name="category_visible">Ορατή στο μενού</string>
+
+    <string name="extra_item">Extra προϊόν</string>
+    <string name="empty_item">Δεν έχετε επιλέξει προϊόν</string>
+    <string name="empty_items">Δεν έχετε επιλέξει ολα τα προϊόντα</string>
+
+    <array name="category_types">
+        <item>ΦΑΓΗΤΟ</item>
+        <item>SNACKS</item>
+        <item>ΓΛΥΚΑ</item>
+        <item>ΠΟΤΑ</item>
+        <item>ΚΑΦΕΔΕΣ</item>
+        <item>ΠΡΟΣΦΟΡΕΣ</item>
+    </array>
+
+    <string name="delete_category">Διαγραφή κατηγορίας</string>
+    <string name="delete_item">Διαγραφή προϊόντος</string>
+    <string name="delete_option">Διαγραφή επιλογής</string>
+    <string name="delete_category_text">Η κατηγορίας και όλα τα προϊόντα της θα διαγραφούν.</string>
+    <string name="delete_item_text">Το προϊόν θα διαγραφεί</string>
+    <string name="delete_item_text_from_cart">Το προϊόν θα διαγραφεί από το καλάθι σας</string>
+    <string name="delete_option_text">Η επιλογή θα διαγραφεί</string>
+
+    <string name="category_added">Η κατηγορία αποθηκεύτηκε</string>
+    <string name="item_added">Το προϊόν προστέθηκε</string>
+
+    <string name="options">Επιλογές</string>
+    <string name="add_option">Προσθέστε επιλογή</string>
+    <string name="single_option">Μονή επιλογή</string>
+    <string name="multiple_options">Πολλαπλή επιλογή</string>
+    <string name="required_option">Υποχρεωτική επιλογή</string>
+    <string name="auto_price">Αυτόματη τιμή</string>
+    <string name="gift_items">Δωρεάν προϊόντα</string>
+    <string name="always_enabled">Όλες τις ώρες</string>
+
+    <string name="size">Μέγεθος</string>
+
+    <string name="size_small_female">Μικρή</string>
+    <string name="size_big_female">Μεγάλη</string>
+
+    <string name="size_atomic">Ατομική (22cm)</string>
+    <string name="size_family">Οικογενειακή (30cm)</string>
+    <string name="size_giga">Γίγας (35cm)</string>
+
+    <string name="size_burger_1">Τεμάχιο</string>
+    <string name="size_burger_2">Μερίδα (Με πατάτες τηγανητές, μαρούλι, ντομάτα &amp; σως Vero)</string>
+
+    <string name="default_size">Προκαθορισμένο μέγεθος:</string>
+
+    <string-array name="all_sizes">
+        <item>Όλα τα μεγέθη</item>
+        <item>Μικρή σαλάτα</item>
+        <item>Μεγάλη σαλάτα</item>
+
+        <item>Ατομική (22cm) πίτσα</item>
+        <item>Οικογενειακή (30cm) πίτσα</item>
+        <item>Γίγας (35cm) πίτσα</item>
+
+        <item>Τεμάχιο Burger</item>
+        <item>Μερίδα Burger</item>
+    </string-array>
+
+    <integer-array name="all_sizes_selections">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+
+    <!-- USERS -->
+    <string name="total_x_users">Συνολικά %d χρήστες</string>
+    <string name="me">Εγώ</string>
+    <string name="edit_user_type">Επεξεργασία χρήστη</string>
+
+
+
+</resources>

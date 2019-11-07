@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="error_something_went_wrong">Προέκυψε κάποιο σφάλμα</string>
+    <string name="error_upload_failed">Το ανέβασμα απέτυχε</string>
+
+    <string name="error_field_empty">Υποχρεωτικό πεδίο</string>
+    <string name="error_email_already_exists">Αυτό το e-mail υπάρχει ήδη</string>
+    <string name="error_email_dont_exists">Το e-mail δεν υπάρχει</string>
+    <string name="error_username_already_exists">Αυτό το username υπάρχει ήδη</string>
+    <string name="error_username_dont_exists">Το username δεν υπάρχει</string>
+    <string name="error_password_characters">Τουλάχιστον 8 χαρακτήρες</string>
+    <string name="error_password_incorrect">Λάθος κωδικός</string>
+
+    <string name="error_phone_numbers">Μη αποδεκτός αριθμός</string>
+
+    <string name="no_internet">Δεν υπάρχει internet</string>
+    <string name="connect_to_internet">Συνδεθείτε στο internet και προσπαθήστε ξανά</string>
+
+</resources>

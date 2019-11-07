@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lLine"
+    android:background="@drawable/ripple_bg"
+    android:layout_height="72dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@color/black_10"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:tint="@color/colorAccent"
+        android:src="@color/black_10"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toStartOf="@+id/ivSecondIcon"
+        android:layout_toEndOf="@+id/ivImage">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            style="@style/AppTheme.TextAppearance.Subtitle1"
+            tools:text="Two-line item"/>
+
+        <TextView
+            android:id="@+id/tvSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            style="@style/AppTheme.TextAppearance.Body2"
+            android:alpha="0.54"
+            tools:text="Secondary text"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ivSecondIcon"
+        style="@style/AppTheme.IconButton"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        app:icon="@drawable/ic_edit_24"
+        app:iconTint="@color/onBackground"/>
+
+</RelativeLayout>

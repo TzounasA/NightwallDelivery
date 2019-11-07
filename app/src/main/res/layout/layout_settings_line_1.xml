@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ripple_bg"
+    android:layout_height="56dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:src="@color/black_10"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="16dp"
+        android:src="@color/black_10"
+        android:tint="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/AppTheme.TextAppearance.Subtitle1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/ivImage"
+        android:gravity="center_vertical"
+        android:layout_toStartOf="@+id/ivSecondIcon"
+        tools:text="One-line item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ivSecondIcon"
+        style="@style/AppTheme.IconButton"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        app:icon="@drawable/ic_edit_24"
+        app:iconTint="@color/onBackground"/>
+
+</RelativeLayout>

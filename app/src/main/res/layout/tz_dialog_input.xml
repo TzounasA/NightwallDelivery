@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/shadowBack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_20"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDialog"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="@dimen/dialog_corner_radius"
+        app:cardElevation="@dimen/dialog_elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/dialogTitleLayout"
+                layout="@layout/tz_dialog_title" />
+
+            <TextView
+                android:id="@+id/tvDialogText"
+                style="@style/AppTheme.TextAppearance.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                tools:text="@string/connect_to_internet"
+                app:layout_constraintTop_toBottomOf="@+id/dialogTitleLayout"
+                app:layout_goneMarginTop="24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dialogInputLayout"
+                style="@style/AppTheme.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/title"
+
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@+id/tvDialogText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDialogInput"
+                    style="@style/AppTheme.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textAutoComplete"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <include
+                android:id="@+id/dialogButtonsLayout"
+                layout="@layout/tz_dialog_buttons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialogInputLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

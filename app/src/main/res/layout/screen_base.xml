@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnBack"
+        style="@style/AppTheme.IconButton"
+        app:icon="@drawable/ic_back"
+        app:iconTint="@color/onBackground"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvScreenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        style="@style/AppTheme.TextAppearance.Headline5"
+        android:gravity="center_vertical"
+        tools:text="Page title"
+        android:letterSpacing="0.08"
+        android:layout_marginStart="8dp"
+        app:layout_goneMarginStart="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"/>
+
+    <Button
+        android:id="@+id/btnProfile"
+        style="@style/AppTheme.IconButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:icon="@drawable/ic_profile_24"
+        app:iconTint="@color/onBackground"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

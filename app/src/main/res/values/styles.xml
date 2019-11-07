@@ -1,0 +1,256 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+
+        <item name="android:windowDisablePreview">true</item>
+
+        <item name="radioButtonStyle">@style/AppTheme.RadioButton</item>
+        <item name="textAppearanceHeadline4">@style/AppTheme.TextAppearance.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/AppTheme.TextAppearance.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/AppTheme.TextAppearance.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/AppTheme.TextAppearance.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/AppTheme.TextAppearance.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/AppTheme.TextAppearance.Body1</item>
+        <item name="textAppearanceBody2">@style/AppTheme.TextAppearance.Body2</item>
+        <item name="textAppearanceButton">@style/AppTheme.TextAppearance.Button</item>
+        <item name="textAppearanceOverline">@style/AppTheme.TextAppearance.Overline</item>
+        <item name="textAppearanceCaption">@style/AppTheme.TextAppearance.Caption</item>
+    </style>
+
+    <style name="AppTheme.PopUp" parent="AppTheme">
+        <item name="colorControlNormal">@color/onPrimary</item>
+    </style>
+
+    <style name="AppTheme.SignIn" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="dialogCornerRadius">@dimen/card_corner_radius</item>
+        <item name="dialogPreferredPadding">0dp</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Transparent" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="AppTheme.DialogTime" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="dialogCornerRadius">@dimen/card_corner_radius</item>
+        <item name="dialogPreferredPadding">0dp</item>
+        <item name="buttonStyle">@style/AppTheme.TextButton</item>
+        <item name="materialButtonStyle">@style/AppTheme.TextButton</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="android:Widget.DeviceDefault.Spinner">
+        <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/onSurface</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="DrawerTitle" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textAppearance">@style/AppTheme.TextAppearance.Subtitle2</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textAppearance">@style/AppTheme.TextAppearance.Subtitle1</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:textAppearance">@style/AppTheme.TextAppearance.Subtitle1</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <!-- = = = = = TEXT APPEARANCE = = = = = -->
+
+    <style name="AppTheme.TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/google_regular</item>
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/google_medium</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/google_medium</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/google_regular</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/google_medium</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/google_medium</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Chip" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="fontFamily">@font/google_regular</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black_54</item>
+    </style>
+
+    <!-- = = = = = TEXT INPUT = = = = = -->
+
+    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/edit_text_corner_radius</item>
+        <item name="counterTextAppearance">@style/TextAppearance.AppTheme.TextInputLayout.CounterText</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.AppTheme.TextInputLayout.HelperText</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.TextInputLayout.CounterText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/onBackground</item>
+        <item name="fontFamily">@font/google_regular</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.TextInputLayout.HelperText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/black_54</item>
+        <item name="fontFamily">@font/google_regular</item>
+    </style>
+
+    <style name="AppTheme.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="fontFamily">@font/google_regular</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <!-- = = = = = BUTTONS = = = = = -->
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/onSecondary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="rippleColor">@color/white_20</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="fontFamily">@font/google_medium</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.ButtonBig" parent="AppTheme.Button">
+        <item name="android:height">56dp</item>
+        <item name="android:width">250dp</item>
+    </style>
+
+    <style name="AppTheme.Button.Negative" parent="AppTheme.Button">
+        <item name="android:textColor">@color/onError</item>
+        <item name="backgroundTint">@color/colorError</item>
+    </style>
+
+    <style name="AppTheme.ActionButton" parent="AppTheme.TextButton">
+        <item name="android:layout_weight">1</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="AppTheme.ActionButton.Positive" parent="AppTheme.ActionButton">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="rippleColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.ActionButton.Negative" parent="AppTheme.ActionButton">
+        <item name="android:textColor">@color/onError</item>
+        <item name="backgroundTint">@color/colorError</item>
+        <item name="rippleColor">@color/black_54</item>
+    </style>
+
+    <style name="AppTheme.ActionButton.Cancel" parent="AppTheme.ActionButton">
+        <item name="android:textColor">@color/onBackground</item>
+        <item name="backgroundTint">@color/black_10</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="rippleColor">@color/colorAccentLight20</item>
+        <item name="fontFamily">@font/google_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="AppTheme.TextButton.Negative" parent="AppTheme.TextButton">
+        <item name="android:textColor">@color/colorError</item>
+        <item name="iconTint">@color/colorError</item>
+        <item name="rippleColor">@color/colorError10</item>
+    </style>
+
+    <style name="AppTheme.IconButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="cornerRadius">@dimen/icon_button_corner_radius</item>
+        <item name="rippleColor">@color/colorAccentLight20</item>
+        <item name="iconTint">@color/colorAccent</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+</resources>

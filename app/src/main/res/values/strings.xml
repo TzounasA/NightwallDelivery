@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- APP SPECIFIC -->
+
+    <string name="app_name">DeliveryApp</string>
+
+    <string name="email_recipient">veropizzaapp@gmail.com</string>
+    <string name="email_subject_new_order">Vero App | Νέα παραγγελία</string>
+
+    <!-- APP SPECIFIC -->
+
+    <string name="channel_foreground">@string/app_name</string>
+    <string name="channel_foreground_text">Η εφαρμογή τρέχει στο παρασκήνιο</string>
+    <string name="channel_orders">Νέες παραγγελίες</string>
+    <string name="channel_orders_description">Ειδοποιήσεις για νέες παραγγελίες</string>
+
+    <string name="yes">Ναι</string>
+    <string name="cancel">Άκυρο</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="ok">Εντάξει</string>
+
+    <string name="user">Χρήστης</string>
+    <string name="username">Username</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="copied">Αντιγράφηκε:</string>
+    <string name="notification_channel_name">Παραγγελίες</string>
+    <string name="notification_channel_description">Ειδοποιήσεις που αφορούν τις παραγγελίες</string>
+    <string name="notification_new_order_title">Νέα παραγγελία</string>
+    <string name="sent_email_via">Στείλτε e-mail μέσω…</string>
+
+    <string name="email_new_order_template">Νέα παραγγελία από %s\n
+        Τηλέφωνο: %s\n
+        Διεύθυνση: %s\n
+        Τελική τιμή: %s\n\n
+        Αναλυτικά:\n\n
+        %s
+    </string>
+</resources>

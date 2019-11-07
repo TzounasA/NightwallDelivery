@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lLine"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        android:src="@color/black_10"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:tint="@color/colorAccent"
+        android:src="@color/black_10"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout"
+        style="@style/AppTheme.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:hint="@string/title"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@+id/ivImage"
+
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input"
+            style="@style/AppTheme.TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

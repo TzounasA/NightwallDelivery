@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- PROFILE -->
+    <string name="manage_shop">Διαχείριση καταστήματος</string>
+    <string name="manage_shop_description">Επεξεργαστείτε τον κατάλογο και τις ρυθμίσεις της επιχείρησης</string>
+    <string name="edit_profile">Επεξεργασία προφίλ</string>
+    <string name="edit_profile_description">Αλλάξτε τις πληροφορίες του προφίλ σας</string>
+    <string name="order_history">Οι παραγγελίες μου</string>
+    <string name="order_history_description">Δείτε το ιστορικό σας</string>
+
+    <string name="logout">Αποσύνδεση</string>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- START ACTIVITY -->
+    <string name="sign_up">ΕΓΓΡΑΦΗ</string>
+    <string name="sign_up_successful">Καλως ορίσατε!</string>
+    <string name="sign_up_complete">Η εγγραφή ολοκληρώθηκε</string>
+    <string name="sign_in">ΣΥΝΔΕΣΗ</string>
+    <string name="sign_in_successful">Σύνδεση επιτυχής</string>
+
+    <string name="sign_in_text">Έχετε ήδη λογαριασμό;</string>
+    <string name="sign_in_action_text">Συνδεθείτε</string>
+    <string name="sign_up_text">Δεν έχετε λογαριασμό;</string>
+    <string name="sign_up_action_text">Εγγραφείτε</string>
+    <string name="reload">ΑΝΑΝΑΙΩΣΗ</string>
+
+    <!-- SIGN UP ACTIVITY -->
+    <string name="create_profile">Δημιουργία προφίλ</string>
+    <string name="first_name">Όνομα</string>
+    <string name="last_name">Επίθετο</string>
+    <string name="full_name">Ονοματεπώνυμο</string>
+    <string name="phone">Κινητό</string>
+    <string name="address">Διεύθυνση</string>
+    <string name="complete">ΟΛΟΚΛΗΡΩΣΗ</string>
+    <string name="skip_cap">ΠΑΡΑΛΗΨΗ</string>
+    <string name="choose_photo">Διαλέξτε φωτογραφία</string>
+    <string name="skip">Παράληψη</string>
+    <string name="skip_text">Αν συνεχίσετε, τα πεδία που συμπληρώσατε δεν θα αποθηκευτούν. Θα μπορείτε όμως να τα επεξεργαστείτε και αργότερα.
+    \n\nΘέλετε να συνεχίσετε;</string>
+
+    <!-- MAIN ACTIVITY -->
+    <string name="logged_in_as">Συνδεθήκατε ως</string>
+    <string name="logged_out_successful">Έγινε αποσύνδεση</string>
+    <string name="item_added_to_cart">Το προϊόν προστέθηκε στο καλάθι</string>
+    <string name="order_added_to_cart">Η παραγγελία προστέθηκε στο καλάθι</string>
+    <string name="exit">ΕΞΟΔΟΣ</string>
+    <string name="close_title">Κλειστό</string>
+    <string name="close_short_text">Το κατάστημα είναι κλειστό</string>
+    <string name="close_text">Το κατάστημα είναι κλειστό. Μπορείτε να δείτε τον κατάλογο, αλλά δεν μπορείτε να παραγγείλετε.</string>
+
+
+    <!-- DISCOUNT -->
+    <string name="first_time_discount_title">Έκπτωση %.2f€</string>
+    <string name="first_time_discount_description">Έχετε εκπτωση %.2f€ στην πρώτη σας παραγγελία%s. \n\nΗ έκπτωση θα προστεθεί αυτόματα πριν την αποστολή της παραγγελίας.</string>
+    <string name="first_time_discount_min_price">, άνω των %.2f€</string>
+    <string name="first_time_discount_reason">Η πρώτη παραγγελία%s.</string>
+
+    <!-- MAIN DRAWER -->
+    <string name="profile">Το προφίλ μου</string>
+    <string name="menu">Κατάλογος</string>
+    <string name="cart">Καλάθι</string>
+    <string name="about">Σχετικά με εμάς</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="other">Άλλα</string>
+
+    <!-- PROFILE -->
+    <string name="addresses">Διευθύνσεις</string>
+    <string name="add_address">Προσθήκη διεύθυνσης</string>
+    <string name="add_address_cap">ΠΡΟΣΘΗΚΗ ΔΙΕΥΘΥΝΣΗΣ</string>
+    <string name="add_new_address_cap">ΠΡΟΣΘΗΚΗ ΝΕΑΣ ΔΙΕΥΘΥΝΣΗΣ</string>
+    <string name="delete_address">Διαγραφη διεύθυνσης</string>
+    <string name="delete_address_text">Η διεύθυνση \"%s\" θα διαγραφεί.</string>
+    <string name="delete">ΔΙΑΓΡΑΦΗ</string>
+    <string name="street">Οδός</string>
+    <string name="number">Αριθμός</string>
+    <string name="floor">Όροφος</string>
+    <string name="area">Περιοχή</string>
+    <string name="doorbell_name">Κουδούνι</string>
+    <string name="optional">Προαιρετικό</string>
+    <string name="floor0">Ισόγειο</string>
+    <string name="x_floor">%sος όροφος</string>
+
+    <string name="change_password">Αλλαγή κωδικού</string>
+    <string name="current_password">Τρέχων κωδικός</string>
+    <string name="new_password">Νέος κωδικός</string>
+    <string name="changes_saved">Οι αλλαγές αποθηκεύτηκαν</string>
+
+
+    <!-- MENU -->
+    <string name="all">Όλα</string>
+    <string name="id_x">ID: %s</string>
+    <string name="additional_info">Επιπλέον πληροφορίες</string>
+    <string name="add_to_cart">ΣΤΟ ΚΑΛΑΘΙ</string>
+    <string name="back">ΠΙΣΩ</string>
+    <string name="add">ΠΡΟΣΘΗΚΗ</string>
+    <string name="loading">Φορτώνει…</string>
+
+
+    <!-- CART -->
+    <string name="item_price">Αρχική τιμή:</string>
+    <string name="discount_price">Έκπτωση:</string>
+    <string name="ingredients_price">Επιλογές:</string>
+    <string name="continue_order">ΣΥΝΕΧΕΙΑ</string>
+    <string name="total_x_items">Συνολικά %d προϊόντα</string>
+    <string name="empty_cart_caps">ΑΔΕΙΑΣΜΑ ΚΑΛΑΘΙΟΥ</string>
+    <string name="empty_cart">Άδειασμα καλαθιού</string>
+    <string name="empty_cart_text">Όλα τα προϊόντα θα διαγραφούν από το καλάθι σας</string>
+    <string name="cart_is_empty">Το καλάθι σας είναι άδειο</string>
+    <string name="x_to_min_order_price">Ακόμα %.02f€ για την ελάχιστη χρέωση</string>
+
+
+    <!-- COMPLETE ORDER -->
+    <string name="total_price_title">Τελική χρέωση</string>
+    <string name="cart_items_price">Συνολική τιμή προϊόντων:</string>
+    <string name="order_total">Σύνολο:</string>
+    <string name="name_and_phone">Στοιχεία επικοινωνίας</string>
+    <string name="complete_order">Ολοκλήρωση παραγγελίας</string>
+    <string name="place_order">ΑΠΟΣΤΟΛΗ ΠΑΡΑΓΓΕΛΙΑΣ</string>
+    <string name="payment_info">Πληρώνετε με μετρητά κατα την παραλαβή της παραγγελίας</string>
+    <string name="wait_for_accepting">Η παραγγελία σας έχει σταλθεί.\nΑναμένεται απάντηση από το κατάστημα.</string>
+    <string name="order_accepted">Η παραγγελία σας ολοκληρώθηκε</string>
+    <string name="order_canceled">Η παραγγελία σας ακυρώθηκε</string>
+    <string name="wait_x_time">Σε %d\' θα βρίσκεται στην τοποθεσία σας</string>
+    <string name="show_order">ΔΕΙΤΕ ΤΗΝ ΠΑΡΑΓΓΕΛΙΑ</string>
+    <string name="canceling_reason">Λόγος ακύρωσης</string>
+    <string name="sent">ΑΠΟΣΤΟΛΗ</string>
+    <string name="change_address">Αλλαγή</string>
+    <string name="change_address_title">Αλλαγή Διεύθυνσης</string>
+    <string name="empty_address">Πρέπει να ορίσετε διεύθυνση</string>
+
+
+    <!-- ORDERS -->
+    <string name="total_x_orders">Συνολικά %d παραγγελίες</string>
+    <string name="order">Παραγγελία</string>
+    <string name="status_change">Αλλαγή κατάστασης</string>
+    <string name="no_orders">Καμία παραγγελία</string>
+    <string name="all_orders">ΟΛΕΣ</string>
+    <string name="new_orders">ΝΕΕΣ</string>
+    <string name="current_orders">ΤΡΕΧΟΥΣΕΣ</string>
+    <string name="done_orders">ΟΛΟΚΛΗΡΩΜΕΝΕΣ</string>
+    <string name="canceled_orders">ΑΚΥΡΟΜΕΝΕΣ</string>
+    <string name="btn_accept">ΑΠΟΔΟΧΗ</string>
+    <string name="btn_cancel">ΑΚΥΡΩΣΗ</string>
+    <string name="btn_preparing">ΕΤΟΙΜΑΖΕΤΑΙ</string>
+    <string name="btn_shipping">ΑΠΟΣΤΟΛΗ</string>
+    <string name="btn_done">ΟΛΟΚΛΗΡΩΣΗ</string>
+    <string name="btn_resent_order">ΕΠΑΝΑΛΗΨΗ</string>
+
+
+    <!-- ABOUT US -->
+    <string name="privacy_policy">PRIVACY POLICY</string>
+    <string name="terms">TERMS &amp; CONDITIONS</string>
+
+    <string name="av_wait_time">Μέσος χρόνος αναμονής</string>
+    <string name="wait_time">Μέσος χρόνος αναμονής</string>
+    <string name="min_order_price">Ελάχιστη χρέωση</string>
+    <string name="active_hours">Ώρες Λειτουργείας</string>
+    <string name="contact">Επικοινωνία</string>
+    <string name="social_media">Social Media</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+
+
+
+    <string name="phone_number">Αριθμός</string>
+    <string name="phone_type">Είδος</string>
+    <string name="phone_title">Όνομα τηλεφώνου</string>
+    <string name="phone_delete">ΔΙΑΓΡΑΦΗ ΤΗΛΕΦΩΝΟΥ</string>
+    <array name="phone_types">
+        <item>ΣΤΑΘΕΡΟ</item>
+        <item>ΚΙΝΗΤΟ</item>
+    </array>
+
+
+
+</resources>
