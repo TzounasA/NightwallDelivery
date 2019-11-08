@@ -10,25 +10,26 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
 import gr.nightwall.deliveryapp.R;
-import gr.nightwall.deliveryapp.data.BusinessManagementDB;
-import gr.nightwall.deliveryapp.interfaces.OnActionListener;
+import gr.nightwall.deliveryapp.database.BusinessManagementDB;
+import gr.nightwall.deliveryapp.database.interfaces.OnGetDataListener;
+import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
 import gr.nightwall.deliveryapp.models.Phone;
 import gr.nightwall.deliveryapp.models.Time;
 import gr.nightwall.deliveryapp.models.management.BusinessSettings;
+import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.views.CustomDialog;
 import gr.nightwall.deliveryapp.views.SettingsLineInput;
 import gr.nightwall.deliveryapp.views.SettingsLineSwitch;
-import gr.nightwall.deliveryapp.views.SettingsLineText;
 
 public class BusinessSettingsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
     private final String TIME_START_EDITED = "time_start";
@@ -39,10 +40,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
     private String timeEdited;
 
     // Views
-    private TextView tvActiveHoursStart, tvActiveHoursEnd;
-    private ViewGroup lOpenNowCustom;
-    private ViewGroup lAverageWaitingTime, lMinOrderPrice, lineAddress;
-    private TextView tvAverageWaitingTime, tvMinOrderPrice;
+    private ViewGroup lineAddress;
     private ViewGroup linePhone1, linePhone2, lineEmail;
     private ViewGroup lineFacebook, lineInstagram, lineWebsite;
 
@@ -57,9 +55,8 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_settings);
 
-        load();
         init();
-        setupScreen();
+        load();
     }
 
     private void init() {
@@ -69,7 +66,33 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
     }
 
     private void load(){
-        businessSettings = BusinessManagementDB.getBusinessSettings();
+        savingIndicator.setVisibility(View.VISIBLE);
+        findViewById(R.id.lParentView).setVisibility(View.INVISIBLE);
+
+        OnGetDataListener getDataListener = new OnGetDataListener() {
+            @Override
+            public <T> void onSuccess(T item) {
+                businessSettings = (BusinessSettings) item;
+
+                if (businessSettings == null){
+                    savingIndicator.setVisibility(View.GONE);
+                    Navigation.errorToast(BusinessSettingsActivity.this);
+                    return;
+                }
+
+                savingIndicator.setVisibility(View.GONE);
+                findViewById(R.id.lParentView).setVisibility(View.VISIBLE);
+                setupScreen();
+            }
+
+            @Override
+            public void onFail() {
+                savingIndicator.setVisibility(View.GONE);
+                Navigation.errorToast(BusinessSettingsActivity.this);
+            }
+        };
+
+        BusinessManagementDB.getBusinessSettings(getDataListener);
     }
 
     private void initToolbar() {
@@ -96,10 +119,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         // Save
         MaterialButton btnSave = findViewById(R.id.btnPositive);
         btnSave.setText(getString(R.string.save));
-        btnSave.setOnClickListener(v ->{
-            saveChangesFromInputs();
-            onBackPressed();
-        });
+        btnSave.setOnClickListener(v -> saveChangesFromInputs());
     }
 
     @Override
@@ -121,7 +141,8 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
 
     private void setupHours() {
         // Active Hours Start
-        tvActiveHoursStart = findViewById(R.id.tvActiveHoursStart);
+        // Views
+        TextView tvActiveHoursStart = findViewById(R.id.tvActiveHoursStart);
         tvActiveHoursStart.setText(businessSettings.getActiveHoursStart().getTimeString());
 
         Time start = businessSettings.getActiveHoursStart();
@@ -138,7 +159,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         });
 
         // Active Hours End
-        tvActiveHoursEnd = findViewById(R.id.tvActiveHoursEnd);
+        TextView tvActiveHoursEnd = findViewById(R.id.tvActiveHoursEnd);
         tvActiveHoursEnd.setText(businessSettings.getActiveHoursEnd().getTimeString());
 
         Time end = businessSettings.getActiveHoursEnd();
@@ -164,12 +185,12 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
 
     private void setupBasic() {
         // Average Waiting Time
-        tvAverageWaitingTime = findViewById(R.id.tvAverageWaitingTime);
+        TextView tvAverageWaitingTime = findViewById(R.id.tvAverageWaitingTime);
         tvAverageWaitingTime.setText(businessSettings.getAverageWaitingTimeString());
         findViewById(R.id.lAverageWaitingTime).setOnClickListener(v -> onEditWaitingTime());
 
         // Min Order Price
-        tvMinOrderPrice = findViewById(R.id.tvMinOrderPrice);
+        TextView tvMinOrderPrice = findViewById(R.id.tvMinOrderPrice);
         tvMinOrderPrice.setText(businessSettings.getMinimumOrderPriceString());
         findViewById(R.id.lMinOrderPrice).setOnClickListener(v -> onEditMinOrderPrice());
 
@@ -351,12 +372,24 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
     private void saveChanges() {
         savingIndicator.setVisibility(View.VISIBLE);
 
-        BusinessManagementDB.saveBusinessSettings(businessSettings);
+        OnSaveDataListener saveListener = new OnSaveDataListener() {
+            @Override
+            public void onSuccess() {
+                savingIndicator.setVisibility(View.GONE);
+                setupScreen();
+                Toast.makeText(BusinessSettingsActivity.this,
+                        getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
+            }
 
-        new Handler().postDelayed(() -> {
-            savingIndicator.setVisibility(View.GONE);
-            setupScreen();
-        },1000);
+            @Override
+            public void onFail() {
+                savingIndicator.setVisibility(View.GONE);
+                Navigation.errorToast(BusinessSettingsActivity.this);
+            }
+        };
+
+        BusinessManagementDB.saveBusinessSettings(businessSettings, saveListener);
+
     }
 
     //endregion

@@ -13,14 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.business_management.ItemTemplatesActivity"></activity>
         <activity
             android:name=".activities.business_management.BusinessSettingsActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/edit_business_settings_title"/>
+            android:label="@string/edit_business_settings_title"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.business_management.BusinessManagementActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/manage_shop"/>
+            android:label="@string/manage_shop"
+            android:theme="@style/AppTheme" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

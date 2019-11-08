@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "973457461770",
+    "firebase_url": "https://nightwall-delivery.firebaseio.com",
+    "project_id": "nightwall-delivery",
+    "storage_bucket": "nightwall-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973457461770:android:718f482e67b0325b53c5f3",
+        "android_client_info": {
+          "package_name": "gr.nightwall.deliveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973457461770-klv2g0onhnvuqh1q1lchc1t2g4erhn2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMpCeUpG0ZRJCpJD-RqUwJHLw4NUElvKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973457461770-klv2g0onhnvuqh1q1lchc1t2g4erhn2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

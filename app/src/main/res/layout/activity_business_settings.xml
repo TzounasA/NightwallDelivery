@@ -14,6 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/lActionButtons">
 
         <LinearLayout
+            android:id="@+id/lParentView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="32dp"

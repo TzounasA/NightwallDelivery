@@ -81,7 +81,7 @@ public class BusinessManagementActivity extends AppCompatActivity {
     }
 
     private void editTemplates(){
-
+        Navigation.startActivity(ItemTemplatesActivity.class);
     }
 
     private void editMenu(){

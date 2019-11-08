@@ -1,4 +1,4 @@
-package gr.nightwall.deliveryapp.data;
+package gr.nightwall.deliveryapp.database;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -6,6 +6,8 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 
 import gr.nightwall.deliveryapp.App;
+import gr.nightwall.deliveryapp.models.Phone;
+import gr.nightwall.deliveryapp.models.Time;
 import gr.nightwall.deliveryapp.models.management.BusinessSettings;
 import gr.nightwall.deliveryapp.models.management.User;
 import gr.nightwall.deliveryapp.models.shop.Cart;
@@ -71,8 +73,32 @@ public class LocalDBHelper {
     public static BusinessSettings getBusinessSettings() {
         String json = getPreferences().getString(PREF_BUSINESS_SETTINGS, null);
 
+        if (json == null){
+            return initBusiness();
+        }
+
         Gson gson = new Gson();
         return gson.fromJson(json, BusinessSettings.class);
+    }
+
+    private static BusinessSettings initBusiness(){
+        BusinessSettings settings = new BusinessSettings("Nightwall Delivery");
+
+        settings.setActiveHoursStart(new Time(18, 0));
+        settings.setActiveHoursEnd(new Time(2, 0));
+        settings.setAverageWaitingTime(30);
+        settings.setMinimumOrderPrice(5.0);
+
+        settings.setAddress("Ανεξαρτησίας **");
+        settings.addPhone(new Phone("6940000000", Phone.PhoneType.MOBILE));
+        settings.addPhone(new Phone("2651000000", Phone.PhoneType.WORK));
+        settings.setEmail("nightwall.gr@gmail.com");
+
+        settings.setFacebookUsername("nightwall.gr");
+        settings.setInstagramUsername("nightwall.gr");
+        settings.setWebsite("nightwall.gr");
+
+        return settings;
     }
 
 }

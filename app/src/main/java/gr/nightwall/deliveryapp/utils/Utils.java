@@ -55,42 +55,6 @@ public class Utils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    /* = = = = = = = = = = = = = = = *
-     *         GET DATABASES         *
-     * = = = = = = = = = = = = = = = */
-
-    private static DatabaseReference getDatabase(String db){
-        return FirebaseDatabase.getInstance().getReference(db);
-    }
-
-    public static DatabaseReference getUsersDatabase(){
-        return getDatabase(Consts.DB_USERS);
-    }
-
-    public static DatabaseReference getBusinessSettingsDatabase(){
-        return getDatabase(Consts.DB_BUSINESS_SETTINGS);
-    }
-
-    public static DatabaseReference getCategoriesDatabase(){
-        return getDatabase(Consts.DB_CATEGORIES);
-    }
-
-    public static DatabaseReference getItemsDatabase(){
-        return getDatabase(Consts.DB_ITEMS);
-    }
-
-    public static DatabaseReference getIngredientCategoriesDatabase(){
-        return getDatabase(Consts.DB_INGREDIENT_CATEGORIES);
-    }
-
-    public static DatabaseReference getIngredientsDatabase(){
-        return getDatabase(Consts.DB_INGREDIENTS);
-    }
-
-    public static DatabaseReference getOrdersDatabase(){
-        return getDatabase(Consts.DB_ORDERS);
-    }
-
 
     /* = = = = = = = = = = = = = = = *
      *      GET FIREBASE STORAGE     *

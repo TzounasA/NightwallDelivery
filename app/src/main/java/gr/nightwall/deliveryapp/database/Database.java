@@ -1,4 +1,4 @@
-package gr.nightwall.deliveryapp.data;
+package gr.nightwall.deliveryapp.database;
 
 
 public class Database {
