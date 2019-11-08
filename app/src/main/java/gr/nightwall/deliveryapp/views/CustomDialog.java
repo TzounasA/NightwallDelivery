@@ -175,22 +175,12 @@ public class CustomDialog {
         // Button Positive
         btnPositive = dialogView.findViewById(R.id.btnPositive);
         if (btnPositive != null)
-            btnPositive.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    closeDialog(context);
-                }
-            });
+            btnPositive.setOnClickListener(view -> closeDialog(context));
 
         // Button Negative
         btnNegative = dialogView.findViewById(R.id.btnNegative);
         if (btnNegative != null)
-            btnNegative.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    closeDialog(context);
-                }
-            });
+            btnNegative.setOnClickListener(view -> closeDialog(context));
     }
 
     private void initInput(){
@@ -203,8 +193,8 @@ public class CustomDialog {
 
     private void initCustomView() {
         customViewFrame = dialogView.findViewById(R.id.customViewFrame);
-        titleDivider.setVisibility(View.VISIBLE);
-        buttonsDivider.setVisibility(View.VISIBLE);
+        titleDivider.setVisibility(View.GONE);
+        buttonsDivider.setVisibility(View.GONE);
     }
 
 
@@ -225,16 +215,13 @@ public class CustomDialog {
         // Animation
         YoYo.with(Techniques.FadeInUp)
                 .duration(150)
-                .onStart(new YoYo.AnimatorCallback() {
-                    @Override
-                    public void call(Animator animator) {
-                        dialogView.setVisibility(View.VISIBLE);
-                        cardDialog.setVisibility(View.VISIBLE);
-                        parent.setVisibility(View.VISIBLE);
+                .onStart(animator -> {
+                    dialogView.setVisibility(View.VISIBLE);
+                    cardDialog.setVisibility(View.VISIBLE);
+                    parent.setVisibility(View.VISIBLE);
 
-                        openDialog = CustomDialog.this;
-                        isOpen = true;
-                    }
+                    openDialog = CustomDialog.this;
+                    isOpen = true;
                 })
                 .playOn(cardDialog);
 
@@ -273,13 +260,10 @@ public class CustomDialog {
     }
 
     public void show(){
-        View.OnLayoutChangeListener onLayoutChangeListener = new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                if (firstOpen){
-                    openDialog();
-                    firstOpen = false;
-                }
+        View.OnLayoutChangeListener onLayoutChangeListener = (v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (firstOpen){
+                openDialog();
+                firstOpen = false;
             }
         };
         dialogView.addOnLayoutChangeListener(onLayoutChangeListener);
@@ -592,12 +576,7 @@ public class CustomDialog {
     private void buildDialog(final Context context) {
         if (cancelable){
             View shadowBack = dialogView.findViewById(R.id.shadowBack);
-            shadowBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    closeDialog(context);
-                }
-            });
+            shadowBack.setOnClickListener(view -> closeDialog(context));
         }
     }
 

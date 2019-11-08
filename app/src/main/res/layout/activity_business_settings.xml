@@ -226,6 +226,7 @@
 
     <!-- Saving Indicator -->
     <RelativeLayout
+        android:id="@+id/savingIndicator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
@@ -239,5 +240,12 @@
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dialogHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

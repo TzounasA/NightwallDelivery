@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme.TextAppearance.Subtitle1"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/av_wait_time"/>
+
+    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/time_picker_background"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        app:snp_valueMarginStart="8dp"
+        app:snp_valueMarginEnd="8dp"
+        app:snp_buttonIconLeft="@drawable/ic_left_24"
+        app:snp_buttonIconRight="@drawable/ic_right_24"
+        app:snp_value_text_appearance="@style/AppTheme.TextAppearance.Headline6"
+        app:snp_maxValue="60"
+        app:snp_minValue="5"
+        app:snp_stepSize="5"
+        app:snp_updateInterval="100"
+        app:snp_value="10"/>
+
+</LinearLayout>

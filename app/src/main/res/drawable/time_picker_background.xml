@@ -7,7 +7,7 @@
     <stroke android:color="@color/colorAccent"
         android:width="2dp"/>
 
-    <corners android:radius="24dp" />
+    <corners android:radius="@dimen/edit_text_corner_radius" />
 
     <size
         android:height="48dp" />

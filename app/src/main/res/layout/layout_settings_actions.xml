@@ -8,14 +8,16 @@
     android:layout_height="54dp">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
         style="@style/AppTheme.ActionButton.Cancel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         tools:text="Cancel"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPositive"
         style="@style/AppTheme.ActionButton.Positive"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         tools:text="Save"/>
 

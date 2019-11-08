@@ -63,7 +63,7 @@
 
     <style name="AppTheme.DialogTime" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="dialogCornerRadius">@dimen/card_corner_radius</item>
+        <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
         <item name="dialogPreferredPadding">0dp</item>
         <item name="buttonStyle">@style/AppTheme.TextButton</item>
         <item name="materialButtonStyle">@style/AppTheme.TextButton</item>
