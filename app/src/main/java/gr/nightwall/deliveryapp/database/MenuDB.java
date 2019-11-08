@@ -2,45 +2,50 @@ package gr.nightwall.deliveryapp.database;
 
 import java.util.ArrayList;
 
+import gr.nightwall.deliveryapp.database.interfaces.OnGetItemListener;
+import gr.nightwall.deliveryapp.database.interfaces.OnGetListListener;
+import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
 import gr.nightwall.deliveryapp.models.shop.*;
 
-class MenuDB {
+import static gr.nightwall.deliveryapp.database.FirebaseDB.Reference.ITEM_TEMPLATES;
+
+public class MenuDB {
 
     //region ITEM TEMPLATES
 
-    static void addItemTemplate(ItemTemplate itemTemplate){
+    public static void addItemTemplate(ItemTemplate itemTemplate){
 
     }
 
-    static void saveItemTemplate(ItemTemplate itemTemplate){
-
+    public static void saveItemTemplate(ItemTemplate itemTemplate, OnSaveDataListener onSaveDataListener){
+        FirebaseDB.saveItemWithId(ITEM_TEMPLATES, itemTemplate, itemTemplate.getId(), onSaveDataListener);
     }
 
-    static ArrayList<ItemTemplate> getAllItemTemplates(){
-        return null;
+    public static void getAllItemTemplates(OnGetListListener onGetListListener){
+        FirebaseDB.getList(ITEM_TEMPLATES, ItemTemplate.class, onGetListListener);
     }
 
-    static ItemTemplate getItemTamplateByID(String id){
-        return null;
+    public static void getItemTemplateByID(String id){
+
     }
 
     //endregion
 
     //region INGREDIENTS
 
-    static void addIngredientCategory(IngredientCategory ingredientCategory){
+    public static void addIngredientCategory(IngredientCategory ingredientCategory){
 
     }
 
-    static void saveIngredientCategory(IngredientCategory ingredientCategory){
+    public static void saveIngredientCategory(IngredientCategory ingredientCategory){
 
     }
 
-    static ArrayList<IngredientCategory> getAllIngredientCategories(){
+    public static ArrayList<IngredientCategory> getAllIngredientCategories(){
         return null;
     }
 
-    static IngredientCategory getIngredientCategoryByID(String id){
+    public static IngredientCategory getIngredientCategoryByID(String id){
         return null;
     }
 
@@ -48,19 +53,19 @@ class MenuDB {
 
     //region ITEMS
 
-    static void addItem(Item item){
+    public static void addItem(Item item){
 
     }
 
-    static void saveItem(Item item){
+    public static void saveItem(Item item){
 
     }
 
-    static ArrayList<Item> getAllItems(){
+    public static ArrayList<Item> getAllItems(){
         return null;
     }
 
-    static Item getItemByID(String id){
+    public static Item getItemByID(String id){
         return null;
     }
 
@@ -68,19 +73,19 @@ class MenuDB {
 
     //region CATEGORIES
 
-    static void addCategory(Category category){
+    public static void addCategory(Category category){
 
     }
 
-    static void saveCategory(Category category){
+    public static void saveCategory(Category category){
 
     }
 
-    static ArrayList<Category> getAllCategories(){
+    public static ArrayList<Category> getAllCategories(){
         return null;
     }
 
-    static Category getCategoryByID(String id){
+    public static Category getCategoryByID(String id){
         return null;
     }
 

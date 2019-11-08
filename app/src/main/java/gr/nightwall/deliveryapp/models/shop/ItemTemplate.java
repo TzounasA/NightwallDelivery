@@ -1,12 +1,13 @@
 package gr.nightwall.deliveryapp.models.shop;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import gr.nightwall.deliveryapp.utils.Utils;
 
 public class ItemTemplate {
 
-    public String id, name;
+    private String id, name;
 
     private ArrayList<IngredientCategory> ingredientsCategories;
 
@@ -15,13 +16,11 @@ public class ItemTemplate {
      *          CONSTRUCTORS         *
      * = = = = = = = = = = = = = = = */
 
-    public ItemTemplate() {}
+    public ItemTemplate() {
+        name = "";
+        ingredientsCategories = new ArrayList<>();
 
-    public ItemTemplate(String name, ArrayList<IngredientCategory> ingredientsCategories) {
-        this.name = name;
-        this.ingredientsCategories = ingredientsCategories;
-
-        id = Utils.generateID(name);
+        id = UUID.randomUUID().toString();
     }
 
     /* = = = = = = = = = = = = = = = *

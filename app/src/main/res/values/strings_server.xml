@@ -8,6 +8,8 @@
     <string name="edit_menu_title">Επεξεργασία Καταλόγου</string>
     <string name="edit_menu_description">Προσαρμώστε το μενού του καταστήματος</string>
 
+    <string name="edit_item_template">Επεξεργασία template</string>
+    <string name="add_item_template">Νέο template</string>
 
     <string name="business_settings_basics">Βασικά</string>
     <string name="business_settings_contact">Επικοινωνία</string>

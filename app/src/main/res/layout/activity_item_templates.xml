@@ -21,4 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <include
+        layout="@layout/screen_top_layer"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

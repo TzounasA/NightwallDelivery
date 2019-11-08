@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
 
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.database.BusinessManagementDB;
-import gr.nightwall.deliveryapp.database.interfaces.OnGetDataListener;
+import gr.nightwall.deliveryapp.database.interfaces.OnGetItemListener;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
 import gr.nightwall.deliveryapp.models.Phone;
 import gr.nightwall.deliveryapp.models.Time;
@@ -48,7 +47,6 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
 
     private LinearLayout dialogHolder;
 
-    //region INITIALIZATION
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +57,11 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         load();
     }
 
-    private void init() {
-        initToolbar();
-        initScreen();
-        initActionButtons();
-    }
-
     private void load(){
         savingIndicator.setVisibility(View.VISIBLE);
         findViewById(R.id.lParentView).setVisibility(View.INVISIBLE);
 
-        OnGetDataListener getDataListener = new OnGetDataListener() {
+        OnGetItemListener getDataListener = new OnGetItemListener() {
             @Override
             public <T> void onSuccess(T item) {
                 businessSettings = (BusinessSettings) item;
@@ -93,6 +85,14 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         };
 
         BusinessManagementDB.getBusinessSettings(getDataListener);
+    }
+
+    //region INITIALIZATION
+
+    private void init() {
+        initToolbar();
+        initScreen();
+        initActionButtons();
     }
 
     private void initToolbar() {
@@ -141,7 +141,6 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
 
     private void setupHours() {
         // Active Hours Start
-        // Views
         TextView tvActiveHoursStart = findViewById(R.id.tvActiveHoursStart);
         tvActiveHoursStart.setText(businessSettings.getActiveHoursStart().getTimeString());
 

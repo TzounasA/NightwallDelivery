@@ -7,8 +7,11 @@ public final class Consts {
     public static final String EMAIL_PASSWORD = "n69456945";
 
     // DATABASES
-    public static final String DB_USERS = "Users";
+    public static final String DB_USERS             = "Users";
     public static final String DB_BUSINESS_SETTINGS = "Business Settings";
+    public static final String DB_ITEM_TEMPLATES    = "Item Templates";
+
+
     public static final String DB_CATEGORIES = "Categories";
     public static final String DB_ITEMS = "Items";
     public static final String DB_INGREDIENT_CATEGORIES = "Ingredient Categories";
@@ -41,6 +44,7 @@ public final class Consts {
     public static final String CHANNEL_ORDERS_ID = "channel_orders";
 
     // INTENTS
+    public static final String ITEM_EXTRA = "item_extra";
     public static final String IMAGE_URL_EXTRA = "image_url_extra";
     public static final String OPEN_CART = "open_cart";
 

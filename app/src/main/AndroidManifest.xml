@@ -13,7 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.business_management.ItemTemplatesActivity"></activity>
+        <activity
+            android:name=".activities.business_management.EditItemTemplateActivity"
+            android:label="@string/edit_item_template"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.business_management.ItemTemplatesActivity"
+            android:label="@string/edit_templates_title"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.business_management.BusinessSettingsActivity"
             android:label="@string/edit_business_settings_title"

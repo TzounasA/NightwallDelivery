@@ -1,6 +1,6 @@
 package gr.nightwall.deliveryapp.database.interfaces;
 
-public interface OnGetDataListener {
+public interface OnGetItemListener {
 
     <T> void onSuccess(T item);
 

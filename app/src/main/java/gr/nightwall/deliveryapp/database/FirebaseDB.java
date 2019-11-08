@@ -8,45 +8,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import gr.nightwall.deliveryapp.database.interfaces.OnGetDataListener;
+import java.util.ArrayList;
+
+import gr.nightwall.deliveryapp.database.interfaces.OnGetItemListener;
+import gr.nightwall.deliveryapp.database.interfaces.OnGetListListener;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
-import gr.nightwall.deliveryapp.models.management.BusinessSettings;
-import gr.nightwall.deliveryapp.models.management.User;
 import gr.nightwall.deliveryapp.utils.Consts;
 
 public class FirebaseDB {
 
+    // region DATABASE REFERENCES
+
     public enum Reference{
         BUSINESS_SETTINGS,
-        USERS
-    }
+        USERS,
 
-    // region DATABASE REFERENCES
+        ITEM_TEMPLATES
+    }
 
     private static DatabaseReference getReference(Reference reference){
         switch (reference){
             case BUSINESS_SETTINGS:
-                return getBusinessSettingsDatabase();
+                return FirebaseDatabase.getInstance().getReference(Consts.DB_BUSINESS_SETTINGS);
             case USERS:
-                return getUsersDatabase();
+                return FirebaseDatabase.getInstance().getReference(Consts.DB_USERS);
+            case ITEM_TEMPLATES:
+                return FirebaseDatabase.getInstance().getReference(Consts.DB_ITEM_TEMPLATES);
         }
 
         return null;
-    }
-
-    private static DatabaseReference getBusinessSettingsDatabase(){
-        return FirebaseDatabase.getInstance().getReference(Consts.DB_BUSINESS_SETTINGS);
-    }
-
-    private static DatabaseReference getUsersDatabase(){
-        return FirebaseDatabase.getInstance().getReference(Consts.DB_USERS);
     }
 
     //endregion
 
     //region ACTIONS
 
-    public static <T> void saveData(Reference db , T item, OnSaveDataListener onSaveDataListener){
+    public static <T> void saveItem(Reference db , T item, OnSaveDataListener onSaveDataListener){
         DatabaseReference reference = getReference(db);
 
         if(reference == null){
@@ -63,11 +60,28 @@ public class FirebaseDB {
         });
     }
 
-    public static <T> void getData(Reference db, Class<T> itemClass, OnGetDataListener onGetDataListener){
+    public static <T> void saveItemWithId(Reference db , T item, String itemId, OnSaveDataListener onSaveDataListener){
         DatabaseReference reference = getReference(db);
 
         if(reference == null){
-            onGetDataListener.onFail();
+            onSaveDataListener.onFail();
+            return;
+        }
+
+        reference.child(itemId).setValue(item).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                onSaveDataListener.onSuccess();
+            } else{
+                onSaveDataListener.onFail();
+            }
+        });
+    }
+
+    public static <T> void getItem(Reference db, Class<T> itemClass, OnGetItemListener onGetItemListener){
+        DatabaseReference reference = getReference(db);
+
+        if(reference == null){
+            onGetItemListener.onFail();
             return;
         }
 
@@ -77,15 +91,50 @@ public class FirebaseDB {
                 T item = dataSnapshot.getValue(itemClass);
 
                 if (item == null) {
-                    onGetDataListener.onFail();
+                    onGetItemListener.onFail();
+                    return;
                 }
 
-                onGetDataListener.onSuccess(item);
+                onGetItemListener.onSuccess(item);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                onGetDataListener.onFail();
+                onGetItemListener.onFail();
+            }
+        });
+    }
+
+    public static <T> void getList(Reference db, Class<T> itemClass, OnGetListListener onGetListListener){
+        DatabaseReference reference = getReference(db);
+
+        if(reference == null){
+            onGetListListener.onFail();
+            return;
+        }
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<T> list = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    T item = snapshot.getValue(itemClass);
+
+                    if (item == null) {
+                        onGetListListener.onFail();
+                        return;
+                    }
+                    
+                    list.add(item);
+                }
+
+                onGetListListener.onSuccess(list);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                onGetListListener.onFail();
             }
         });
     }

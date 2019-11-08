@@ -36,13 +36,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import gr.nightwall.deliveryapp.R;
+import gr.nightwall.deliveryapp.models.shop.Cart;
 
 public class Utils {
 
@@ -111,78 +116,16 @@ public class Utils {
 
 
     /* = = = = = = = = = = = = = = = *
-     *            DIALOGS            *
+     *         RECYCLER VIEW         *
      * = = = = = = = = = = = = = = = */
 
-    public static void initDialog(final Context context, final View dialog){
-//        CardView cardDialog = dialog.findViewById(R.id.cardDialog);
-//        View shadowBack = dialog.findViewById(R.id.shadowBack);
-//
-//        // Can't click through
-//        cardDialog.setClickable(true);
-//        cardDialog.setFocusable(true);
-//
-//        // Shadow Click
-//        shadowBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                closeDialog(context, dialog);
-//            }
-//        });
-//
-//        // Button Negative
-//        MaterialButton btnNegative = dialog.findViewById(R.id.btnNegative);
-//        if (btnNegative != null)
-//            btnNegative.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Utils.closeDialog(context, dialog);
-//                }
-//            });
-    }
+    public static void initRecyclerView(Context context,
+                                        RecyclerView recyclerView, RecyclerView.Adapter adapter){
 
-    public static void openDialog(final View dialog){
-//        CardView cardDialog = dialog.findViewById(R.id.cardDialog);
-//        View shadowBack = dialog.findViewById(R.id.shadowBack);
-//
-//        // Animation
-//        YoYo.with(Techniques.FadeInUp)
-//                .duration(300)
-//                .onStart(new YoYo.AnimatorCallback() {
-//                    @Override
-//                    public void call(Animator animator) {
-//                        dialog.setVisibility(View.VISIBLE);
-//                    }
-//                })
-//                .playOn(cardDialog);
-//
-//        YoYo.with(Techniques.FadeIn)
-//                .duration(400)
-//                .interpolate(new AccelerateInterpolator())
-//                .playOn(shadowBack);
-    }
-
-    public static void closeDialog(Context context, final View dialog){
-//        CardView cardDialog = dialog.findViewById(R.id.cardDialog);
-//        View shadowBack = dialog.findViewById(R.id.shadowBack);
-//
-//        // Animation
-//        YoYo.with(Techniques.FadeOutDown)
-//                .duration(300)
-//                .onEnd(new YoYo.AnimatorCallback() {
-//                    @Override
-//                    public void call(Animator animator) {
-//                        dialog.setVisibility(View.GONE);
-//                    }
-//                })
-//                .playOn(cardDialog);
-//
-//        YoYo.with(Techniques.FadeOut)
-//                .duration(300)
-//                .interpolate(new DecelerateInterpolator())
-//                .playOn(shadowBack);
-//
-//        closeSoftKeyboard(context);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
     }
 
 
@@ -212,6 +155,19 @@ public class Utils {
         String id = name.trim().replace(" ", "_");
         id = id + "_" + UUID.randomUUID().toString();
         return Utils.fixDatabasePath(id);
+    }
+
+
+    /* = = = = = = = = = = = = = = = *
+     *             JSON              *
+     * = = = = = = = = = = = = = = = */
+
+    public static <T> String toJson(T item){
+        return new Gson().toJson(item);
+    }
+
+    public static <T> T fromJson(String itemJson, Class<T> itemClass){
+        return new Gson().fromJson(itemJson, itemClass);
     }
 
 
