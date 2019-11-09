@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.shop;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,19 +133,23 @@ public class Category {
      *         GET MORE INFO         *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     public int getItemsCount(){
         checkIfNull();
         return itemsIds.size();
     }
 
+    @Exclude
     public String getCategoryTypeName(){
         return categoryType == null? "" : categoryType.getName();
     }
 
+    @Exclude
     public int getCategoryTypeIconRes(){
         return categoryType == null? R.drawable.ic_category_24 : categoryType.getIconRes();
     }
 
+    @Exclude
     public int getCategoryTypeID(){
         return categoryType == null? -1 : categoryType.getID();
     }

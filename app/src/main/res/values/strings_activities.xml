@@ -9,7 +9,6 @@
     <string name="order_history">Οι παραγγελίες μου</string>
     <string name="order_history_description">Δείτε το ιστορικό σας</string>
 
-    <string name="logout">Αποσύνδεση</string>
 
 
 
@@ -101,7 +100,6 @@
     <string name="additional_info">Επιπλέον πληροφορίες</string>
     <string name="add_to_cart">ΣΤΟ ΚΑΛΑΘΙ</string>
     <string name="back">ΠΙΣΩ</string>
-    <string name="add">ΠΡΟΣΘΗΚΗ</string>
     <string name="loading">Φορτώνει…</string>
 
 

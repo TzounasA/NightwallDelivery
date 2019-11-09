@@ -7,28 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".activities.business_management.EditItemTemplateActivity">
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/lParentView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingTop="16dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/lActionButtons">
 
-        <LinearLayout
-            android:id="@+id/lParentView"
+        <!-- Name -->
+        <include
+            android:id="@+id/lineTemplateName"
+            layout="@layout/layout_settings_line_input"/>
+
+        <!-- Ingredient categories -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingBottom="32dp"
-            android:orientation="vertical">
+            android:layout_height="48dp"
+            android:paddingStart="72dp"
+            android:paddingEnd="16dp">
 
-            <!-- Name -->
-            <include
-                android:id="@+id/lineTemplateName"
-                layout="@layout/layout_settings_line_input"/>
+            <TextView
+                style="@style/AppTheme.TextAppearance.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/ingredient_categories"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                style="@style/AppTheme.Button.Secondary"
+                android:onClick="addNewIngredientCategory"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-    </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredientCategories"
+            android:paddingTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
     <include
         android:id="@+id/lActionButtons"

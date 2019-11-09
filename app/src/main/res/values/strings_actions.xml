@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="add">Προσθήκη</string>
+    <string name="logout">Αποσύνδεση</string>
+    <string name="yes">Ναι</string>
+    <string name="cancel">Άκυρο</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="ok">Εντάξει</string>
+
+
+    <string name="changes_saved">Οι αλλαγές αποθηκεύτηκαν</string>
+
+</resources>

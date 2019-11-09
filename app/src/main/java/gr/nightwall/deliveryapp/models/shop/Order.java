@@ -1,6 +1,9 @@
 package gr.nightwall.deliveryapp.models.shop;
 
 import androidx.annotation.NonNull;
+
+import com.google.firebase.database.Exclude;
+
 import gr.nightwall.deliveryapp.models.Address;
 import gr.nightwall.deliveryapp.models.Date;
 import gr.nightwall.deliveryapp.models.management.FirstTimeOffer;
@@ -152,6 +155,7 @@ public class Order {
      *         GET MORE INFO         *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     public String getPhoneNumberText() {
         if (phone != null && !phone.isEmpty()) {
             return "(+30) "
@@ -163,10 +167,12 @@ public class Order {
     }
 
     @NonNull
+    @Exclude
     public String getFinalPriceString(){
         return String.format(Locale.getDefault(), "%.2f €", getFinalPrice());
     }
 
+    @Exclude
     public double getActualIncome(){
         if (status == Status.DONE)
             return finalPrice;
@@ -174,6 +180,7 @@ public class Order {
             return 0;
     }
 
+    @Exclude
     public String getItemsString(){
         StringBuilder itemsBuilder = new StringBuilder();
 
@@ -194,10 +201,12 @@ public class Order {
         return itemsBuilder.toString();
     }
 
+    @Exclude
     public String getDateString() {
         return date.getDateAndTimeString();
     }
 
+    @Exclude
     public boolean isRecent(){
         if (HOURS_TO_BE_RECENT == -1)
             return true;

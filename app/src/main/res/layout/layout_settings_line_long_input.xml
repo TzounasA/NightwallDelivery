@@ -41,7 +41,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
-            style="@style/AppTheme.TextInputEditText"
+            style="@style/AppTheme.TextInputEditTextLong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

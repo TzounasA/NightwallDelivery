@@ -22,26 +22,27 @@
 
 
     <!-- WITH OPACITY -->
-    <color name="colorPrimary10">#288b0305</color>
-    <color name="colorPrimary20">#4F8b0305</color>
+    <color name="colorPrimary05">#0D8B0305</color>
+    <color name="colorPrimary10">#1A8B0305</color>
+    <color name="colorPrimary20">#338B0305</color>
     <color name="colorPrimary35">#598b0305</color>
     <color name="colorPrimary54">#8A8b0305</color>
 
-    <color name="colorAccentLight10">#28b8211c</color>
-    <color name="colorAccentLight20">#4fb8211c</color>
-    <color name="colorAccentLight30">#66b8211c</color>
+    <color name="colorAccentLight10">#1AB8211C</color>
+    <color name="colorAccentLight20">#33B8211C</color>
+    <color name="colorAccentLight30">#4DB8211C</color>
 
-    <color name="colorAccent10">#288b0305</color>
-    <color name="colorAccent20">#4f8b0305</color>
+    <color name="colorAccent10">#1A8B0305</color>
+    <color name="colorAccent20">#338B0305</color>
     <color name="colorAccent54">#8A8b0305</color>
 
-    <color name="colorError10">#28D70508</color>
-    <color name="colorError20">#4fD70508</color>
+    <color name="colorError10">#1AD70508</color>
+    <color name="colorError20">#33D70508</color>
     <color name="colorError50">#80D70508</color>
 
     <color name="onBackground_70">#B2000000</color>
     <color name="onPrimary54">#8AFFFFFF</color>
-    <color name="onPrimary70">#DFFFFFFF</color>
+    <color name="onPrimary70">#B3FFFFFF</color>
     <color name="onSecondary54">#8AFFFFFF</color>
 
 

@@ -20,6 +20,7 @@ import com.google.android.material.button.MaterialButton;
 import androidx.core.app.NotificationCompat;
 import androidx.cardview.widget.CardView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -152,11 +154,28 @@ public class Utils {
     }
 
     public static String generateID(String name){
+        if (name == null || name.isEmpty()){
+            return generateID();
+        }
+
         String id = name.trim().replace(" ", "_");
         id = id + "_" + UUID.randomUUID().toString();
         return Utils.fixDatabasePath(id);
     }
 
+    public static String generateID(){
+        return UUID.randomUUID().toString();
+    }
+
+    public static String getTextFromSetting(ViewGroup setting){
+        TextInputEditText input = setting.findViewById(R.id.input);
+
+        if (input.getText() == null){
+            return "";
+        }
+
+        return input.getText().toString();
+    }
 
     /* = = = = = = = = = = = = = = = *
      *             JSON              *

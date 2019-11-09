@@ -126,4 +126,5 @@ public class ItemTemplatesActivity extends AppCompatActivity {
     }
 
     //endregion
+
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- MAIN MANAGEMENT MENU -->
     <string name="edit_business_settings_title">Διαχείριση</string>
     <string name="edit_business_settings_description">Επεξεργαστείτε τις ρυθμίσεις του καταστήματος</string>
     <string name="edit_templates_title">Templates</string>
@@ -8,9 +9,7 @@
     <string name="edit_menu_title">Επεξεργασία Καταλόγου</string>
     <string name="edit_menu_description">Προσαρμώστε το μενού του καταστήματος</string>
 
-    <string name="edit_item_template">Επεξεργασία template</string>
-    <string name="add_item_template">Νέο template</string>
-
+    <!-- BUSINESS SETTINGS -->
     <string name="business_settings_basics">Βασικά</string>
     <string name="business_settings_contact">Επικοινωνία</string>
     <string name="business_settings_social_media">Social media</string>
@@ -25,7 +24,16 @@
     <string name="edit_phone">Τηλέφωνο</string>
     <string name="edit_website">Website</string>
 
-    <string name="changes_saved">Οι αλλαγές αποθηκεύτηκαν</string>
+    <!-- EDIT ITEM TEMPLATE -->
+    <string name="edit_item_template">Επεξεργασία template</string>
+    <string name="add_item_template">Νέο template</string>
+    <string name="ingredient_categories">Επιλογές</string>
+    <string name="ingredients">Συστατικά</string>
+
+    <!-- EDIT INGREDIENT CATEGORY -->
+    <string name="edit_ingredient_category">Επεξεργασία επιλογής</string>
+    <string name="add_ingredient_category">Νέα επιλογή</string>
+
 
 
 

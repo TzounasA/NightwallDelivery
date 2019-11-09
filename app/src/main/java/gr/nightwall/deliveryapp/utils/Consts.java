@@ -45,6 +45,7 @@ public final class Consts {
 
     // INTENTS
     public static final String ITEM_EXTRA = "item_extra";
+    public static final String ITEM_EXTRA_2 = "item_extra_2";
     public static final String IMAGE_URL_EXTRA = "image_url_extra";
     public static final String OPEN_CART = "open_cart";
 

@@ -9,6 +9,7 @@ import gr.nightwall.deliveryapp.R;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA;
+import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA_2;
 
 public class Navigation {
 

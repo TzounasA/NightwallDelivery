@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.management;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
 
 import gr.nightwall.deliveryapp.models.Phone;
@@ -18,6 +20,7 @@ public class BusinessSettings {
 
     private String facebookUsername, instagramUsername, website;
 
+    @Exclude
     private FirstTimeOffer firstTimeOffer;
 
     private boolean autoOperation;
@@ -96,6 +99,7 @@ public class BusinessSettings {
         this.website = website;
     }
 
+    @Exclude
     public void setFirstTimeOffer(FirstTimeOffer firstTimeOffer) {
         this.firstTimeOffer = firstTimeOffer;
     }
@@ -183,23 +187,28 @@ public class BusinessSettings {
         return website;
     }
 
+    @Exclude
     public FirstTimeOffer getFirstTimeOffer() {
         return firstTimeOffer;
     }
 
     // Extra Getters
+    @Exclude
     public String getActiveHours(){
         return activeHoursStart.getTimeString() + " - " + activeHoursEnd.getTimeString();
     }
 
+    @Exclude
     public String getAverageWaitingTimeString() {
         return averageWaitingTime + "\'";
     }
 
+    @Exclude
     public String getMinimumOrderPriceString() {
         return minimumOrderPrice + "€";
     }
 
+    @Exclude
     public Phone getPhoneAt(int index){
         if (phones == null || index >= phones.size())
             return null;
@@ -207,36 +216,44 @@ public class BusinessSettings {
         return phones.get(index);
     }
 
+    @Exclude
     public String getFacebookUrl(){
         return "https://www.facebook.com/" + facebookUsername;
     }
 
+    @Exclude
     public boolean hasFacebook() {
         return facebookUsername != null && ! facebookUsername.isEmpty();
     }
 
+    @Exclude
     public String getInstagramUrl(){
         return "https://www.instagram.com/" + instagramUsername;
     }
 
+    @Exclude
     public boolean hasInstagram() {
         return instagramUsername != null && ! instagramUsername.isEmpty();
     }
 
+    @Exclude
     public boolean isOpenNow(){
         return isAutoOperation() && isInActiveHours();
     }
 
+    @Exclude
     public boolean hasFirstTimeDiscount(){
         return firstTimeOffer != null;
     }
 
 
     // Can Order
+    @Exclude
     public boolean canOrderThisNow(double price){
         return isOpenNow() && isOverMinimum(price);
     }
 
+    @Exclude
     public boolean isInActiveHours(){
         Time now = Time.getNow();
 
@@ -252,6 +269,7 @@ public class BusinessSettings {
         return timeNow >= timeStart && timeNow < timeEnd;
     }
 
+    @Exclude
     public boolean isOverMinimum(double price){
         return price >= minimumOrderPrice;
     }

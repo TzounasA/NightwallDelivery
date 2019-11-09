@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.management;
 
+import com.google.firebase.database.Exclude;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -206,11 +208,13 @@ public class User {
      *         GET MORE INFO         *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     public int getOrdersCount(){
         checkIfNull();
         return ordersIds.size();
     }
 
+    @Exclude
     public String getPhoneNumberText() {
         if (phone != null && !phone.isEmpty()) {
             return "(+30) "

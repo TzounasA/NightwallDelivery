@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.shop;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Locale;
 
 import gr.nightwall.deliveryapp.utils.Utils;
@@ -67,14 +69,17 @@ public class Ingredient {
      *         GET MORE INFO         *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     public String getPriceString(){
         return String.format(Locale.getDefault(), "%.2f €", price);
     }
 
+    @Exclude
     public String getPriceFormatted(){
         return String.format(Locale.getDefault(), "%.2f", price);
     }
 
+    @Exclude
     public String getNameWithPrice(){
         if (price == 0)
             return name;

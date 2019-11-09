@@ -1,5 +1,6 @@
 package gr.nightwall.deliveryapp.views;
 
+import android.text.InputType;
 import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -26,6 +27,11 @@ public class SettingsLineInput extends SettingsLine {
 
     public SettingsLineInput hint(String hint){
         inputLayout.setHint(hint);
+        return this;
+    }
+
+    public SettingsLineInput inputType(int inputType){
+        input.setInputType(inputType);
         return this;
     }
 

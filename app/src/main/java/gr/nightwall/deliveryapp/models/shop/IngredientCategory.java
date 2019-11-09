@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.shop;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
 
 import gr.nightwall.deliveryapp.utils.Utils;
@@ -8,11 +10,11 @@ public class IngredientCategory {
 
     public enum Options{SINGLE, MULTIPLE}
 
-    private String id, name, itemId;
+    private String id, name;
     private Options options;
     private boolean required;
     private ArrayList<Ingredient> ingredients;
-    private String optionPriority, priorityNumber;
+    private String priorityNumber;
 
     private String description, iconURL;
 
@@ -21,21 +23,22 @@ public class IngredientCategory {
      *          CONSTRUCTORS         *
      * = = = = = = = = = = = = = = = */
 
-    public IngredientCategory(){}
+    public IngredientCategory(){
+        this("010");
+    }
 
-    public IngredientCategory(String name, Options options, boolean required, String priorityNumber) {
-        this.name = name;
-        this.options = options;
-        this.required = required;
-        this.itemId = null;
-        this.optionPriority = priorityNumber;
-        this.priorityNumber = priorityNumber;
+    public IngredientCategory(String priority){
+        name = "";
+        priorityNumber = priority;
 
-        id = Utils.generateID(name);
+        options = Options.MULTIPLE;
+
+        id = Utils.generateID();
 
         description = "";
         iconURL = "";
     }
+
 
     /* = = = = = = = = = = = = = = = *
      *            SETTERS            *
@@ -61,13 +64,8 @@ public class IngredientCategory {
         this.iconURL = iconURL;
     }
 
-    public void setOptionPriority(String optionPriority) {
-        this.optionPriority = optionPriority;
-    }
-
     public void setPriorityNumber(String priorityNumber) {
         this.priorityNumber = priorityNumber;
-        setOptionPriority(itemId + "_" + priorityNumber);
     }
 
 
@@ -111,10 +109,6 @@ public class IngredientCategory {
         return required;
     }
 
-    public String getItemId() {
-        return itemId;
-    }
-
     public ArrayList<Ingredient> getIngredients() {
         checkIfNull();
         return ingredients;
@@ -122,10 +116,6 @@ public class IngredientCategory {
 
     public String getDescription() {
         return description;
-    }
-
-    public String getOptionPriority() {
-        return optionPriority;
     }
 
     public String getPriorityNumber() {
@@ -141,6 +131,7 @@ public class IngredientCategory {
      *         GET MORE INFO         *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     public int getIngredientsCount(){
         checkIfNull();
         return ingredients.size();
@@ -151,6 +142,7 @@ public class IngredientCategory {
      *        PRIVATE METHODS        *
      * = = = = = = = = = = = = = = = */
 
+    @Exclude
     private void checkIfNull(){
         if (ingredients == null)
             ingredients = new ArrayList<>();
@@ -163,10 +155,6 @@ public class IngredientCategory {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {

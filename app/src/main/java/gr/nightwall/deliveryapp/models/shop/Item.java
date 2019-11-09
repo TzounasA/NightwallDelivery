@@ -1,5 +1,7 @@
 package gr.nightwall.deliveryapp.models.shop;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -156,26 +158,32 @@ public class Item {
 
     //region GET MORE INFO
 
+    @Exclude
     public String getPriceString(){
         return String.format(Locale.getDefault(), "%.2f €", price);
     }
 
+    @Exclude
     public String getPriceFormatted(){
         return String.format(Locale.US, "%.2f", price);
     }
 
+    @Exclude
     public String getIngredientsPriceString(){
         return String.format(Locale.getDefault(), "%.2f €", ingredientsPrice);
     }
 
+    @Exclude
     public String getIngredientsPriceFormatted(){
         return String.format(Locale.US, "%.2f", ingredientsPrice);
     }
 
+    @Exclude
     public String getFinalPriceString(){
         return String.format(Locale.getDefault(), "%.2f €", finalPrice);
     }
 
+    @Exclude
     public String getFinalPriceFormatted(){
         return String.format(Locale.US, "%.2f", finalPrice);
     }
@@ -210,6 +218,7 @@ public class Item {
         finalPrice += ingredient.getPrice();
     }
 
+    @Exclude
     public String getAllSelectedIngredients(){
         try {
             if (ingredientsNames == null)
@@ -230,6 +239,7 @@ public class Item {
         }
     }
 
+    @Exclude
     private String getIngredientsStringWithTabs(List<String> ingredients){
         StringBuilder ingredientsBuilder = new StringBuilder();
 

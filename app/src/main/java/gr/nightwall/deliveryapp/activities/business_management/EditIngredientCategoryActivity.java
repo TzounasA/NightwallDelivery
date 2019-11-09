@@ -1,87 +1,68 @@
 package gr.nightwall.deliveryapp.activities.business_management;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.util.ArrayList;
-
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.adapters.IngredientCategoriesAdapter;
-import gr.nightwall.deliveryapp.adapters.ItemTemplatesAdapter;
-import gr.nightwall.deliveryapp.database.BusinessManagementDB;
 import gr.nightwall.deliveryapp.database.MenuDB;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
-import gr.nightwall.deliveryapp.models.Phone;
-import gr.nightwall.deliveryapp.models.Time;
 import gr.nightwall.deliveryapp.models.shop.IngredientCategory;
 import gr.nightwall.deliveryapp.models.shop.ItemTemplate;
 import gr.nightwall.deliveryapp.utils.Consts;
 import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.utils.Utils;
 import gr.nightwall.deliveryapp.views.SettingsLineInput;
-import gr.nightwall.deliveryapp.views.SettingsLineSwitch;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA;
-import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA_2;
 
-public class EditItemTemplateActivity extends AppCompatActivity {
-    private static final int ACTIVITY_RESULT = 1;
+public class EditIngredientCategoryActivity extends AppCompatActivity {
 
     // Data
     private ItemTemplate template;
+    private IngredientCategory category;
 
     //Views
-    private ViewGroup lineTemplateName;
+    private ViewGroup linePriority, lineName, lineDescription;
+    private AppCompatCheckBox cbRequired;
+    private AppCompatRadioButton rbSingleOption, rbMultipleOptions;
 
     private ViewGroup savingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_item_template);
+        setContentView(R.layout.activity_edit_ingredient_category);
 
-        template = Utils.fromJson(getIntent().getStringExtra(Consts.ITEM_EXTRA), ItemTemplate.class);
-        if (template == null){
-            template = new ItemTemplate();
-        }
-
+        getExtra();
         init();
         setupScreen();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    private void getExtra(){
+        String templateJson = getIntent().getStringExtra(Consts.ITEM_EXTRA);
+        String categoryJson = getIntent().getStringExtra(Consts.ITEM_EXTRA_2);
 
-        if (resultCode != RESULT_OK)
-            return;
-
-        if (requestCode == ACTIVITY_RESULT) {
-            if (data == null)
-                return;
-
-            String templateJson = data.getStringExtra(ITEM_EXTRA);
-            if (templateJson == null)
-                return;
-
-            template = Utils.fromJson(templateJson, ItemTemplate.class);
-            setupScreen();
+        template = Utils.fromJson(templateJson, ItemTemplate.class);
+        category = Utils.fromJson(categoryJson, IngredientCategory.class);
+        if (template == null || category == null){
+            Navigation.errorToast(this);
+            finish();
         }
-
     }
 
     //region INITIALIZATION
@@ -100,7 +81,7 @@ public class EditItemTemplateActivity extends AppCompatActivity {
 
         bar.setDisplayHomeAsUpEnabled(true);
 
-        if (template.getName().isEmpty()){
+        if (category.getName().isEmpty()){
             bar.setTitle(getString(R.string.add_item_template));
         }
     }
@@ -133,43 +114,47 @@ public class EditItemTemplateActivity extends AppCompatActivity {
     //region SET UP SCREEN
 
     private void setupScreen(){
-        setupName();
-        setupIngredientCategories();
+        setupInputs();
+        setupIngredients();
     }
 
-    private void setupName() {
-        lineTemplateName = findViewById(R.id.lineTemplateName);
-        new SettingsLineInput(lineTemplateName)
+    private void setupInputs() {
+        // Priority
+        linePriority = findViewById(R.id.lineIngredientCategoryPriority);
+        new SettingsLineInput(linePriority)
+                .hint(getString(R.string.priority))
+                .prefill(category.getPriorityNumber())
+                .inputType(InputType.TYPE_CLASS_NUMBER);
+
+        // Required
+        cbRequired = findViewById(R.id.cbRequired);
+        cbRequired.setChecked(category.isRequired());
+
+        // Name
+        lineName = findViewById(R.id.lineIngredientCategoryName);
+        new SettingsLineInput(lineName)
                 .hint(getString(R.string.title))
-                .prefill(template.getName())
+                .prefill(category.getName())
                 .iconRes(R.drawable.ic_category_24);
+
+        // Description
+        lineDescription = findViewById(R.id.lineIngredientCategoryDescription);
+        new SettingsLineInput(lineDescription)
+                .hint(getString(R.string.description))
+                .prefill(category.getDescription());
+
+        // Options
+        rbSingleOption = findViewById(R.id.rbSingleOption);
+        rbMultipleOptions = findViewById(R.id.rbMultipleOptions);
+
+        if (category.getOptions() == IngredientCategory.Options.SINGLE)
+            rbSingleOption.setChecked(true);
+        else
+            rbMultipleOptions.setChecked(true);
     }
 
-    private void setupIngredientCategories(){
-        IngredientCategoriesAdapter adapter = new IngredientCategoriesAdapter(this, template.getIngredientsCategories());
-        adapter.setOnItemClick(this::openIngredientCategory);
-
-        RecyclerView recyclerView = findViewById(R.id.rvIngredientCategories);
-        Utils.initRecyclerView(this, recyclerView, adapter);
-    }
-
-    //endregion
-
-    //region ACTIONS
-
-    private void openIngredientCategory(IngredientCategory ingredientCategory){
-        Intent intent = new Intent(this, EditIngredientCategoryActivity.class);
-        intent.putExtra(ITEM_EXTRA, Utils.toJson(template));
-        intent.putExtra(ITEM_EXTRA_2, Utils.toJson(ingredientCategory));
-
-        startActivityForResult(intent, ACTIVITY_RESULT);
-    }
-
-    public void addNewIngredientCategory(View v){
-        String priority = template.getPriorityForNewIngredientCategory();
-        IngredientCategory ingredientCategory = new IngredientCategory(priority);
-
-        openIngredientCategory(ingredientCategory);
+    private void setupIngredients() {
+        // TODO SETUP INGREDIENTS
     }
 
     //endregion
@@ -177,41 +162,42 @@ public class EditItemTemplateActivity extends AppCompatActivity {
     //region SAVE CHANGES
 
     private void saveChangesFromInputs(){
-        template.setName(getTextFromSetting(lineTemplateName));
+        // TODO SAVE THE INPUTS
 
         saveChanges();
     }
 
-    private String getTextFromSetting(ViewGroup setting){
-        TextInputEditText input = setting.findViewById(R.id.input);
-
-        if (input.getText() == null){
-            return "";
-        }
-
-        return input.getText().toString();
-    }
-
     private void saveChanges() {
+        template.saveIngredientCategory(category);
+
         savingIndicator.setVisibility(View.VISIBLE);
 
         OnSaveDataListener saveListener = new OnSaveDataListener() {
             @Override
             public void onSuccess() {
                 savingIndicator.setVisibility(View.GONE);
-                setupScreen();
-                Toast.makeText(EditItemTemplateActivity.this,
+                Toast.makeText(EditIngredientCategoryActivity.this,
                         getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
+
+                returnResult();
             }
 
             @Override
             public void onFail() {
                 savingIndicator.setVisibility(View.GONE);
-                Navigation.errorToast(EditItemTemplateActivity.this);
+                Navigation.errorToast(EditIngredientCategoryActivity.this);
             }
         };
 
         MenuDB.saveItemTemplate(template, saveListener);
+    }
+
+    private void returnResult(){
+        Intent intent = new Intent();
+        intent.putExtra(ITEM_EXTRA, Utils.toJson(template));
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     //endregion

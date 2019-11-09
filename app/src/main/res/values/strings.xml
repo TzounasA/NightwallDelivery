@@ -14,11 +14,6 @@
     <string name="channel_orders">Νέες παραγγελίες</string>
     <string name="channel_orders_description">Ειδοποιήσεις για νέες παραγγελίες</string>
 
-    <string name="yes">Ναι</string>
-    <string name="cancel">Άκυρο</string>
-    <string name="save">Αποθήκευση</string>
-    <string name="ok">Εντάξει</string>
-
     <string name="user">Χρήστης</string>
     <string name="username">Username</string>
     <string name="email">E-mail</string>

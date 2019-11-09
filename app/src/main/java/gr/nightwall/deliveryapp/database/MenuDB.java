@@ -13,10 +13,6 @@ public class MenuDB {
 
     //region ITEM TEMPLATES
 
-    public static void addItemTemplate(ItemTemplate itemTemplate){
-
-    }
-
     public static void saveItemTemplate(ItemTemplate itemTemplate, OnSaveDataListener onSaveDataListener){
         FirebaseDB.saveItemWithId(ITEM_TEMPLATES, itemTemplate, itemTemplate.getId(), onSaveDataListener);
     }
@@ -27,26 +23,6 @@ public class MenuDB {
 
     public static void getItemTemplateByID(String id){
 
-    }
-
-    //endregion
-
-    //region INGREDIENTS
-
-    public static void addIngredientCategory(IngredientCategory ingredientCategory){
-
-    }
-
-    public static void saveIngredientCategory(IngredientCategory ingredientCategory){
-
-    }
-
-    public static ArrayList<IngredientCategory> getAllIngredientCategories(){
-        return null;
-    }
-
-    public static IngredientCategory getIngredientCategoryByID(String id){
-        return null;
     }
 
     //endregion
