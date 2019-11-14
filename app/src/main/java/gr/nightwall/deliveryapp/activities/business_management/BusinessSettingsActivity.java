@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -207,6 +208,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         if (businessSettings.getPhones().size() > 0){
             new SettingsLineInput(linePhone1)
                     .hint(getString(R.string.edit_phone))
+                    .inputType(InputType.TYPE_CLASS_PHONE)
                     .prefill(businessSettings.getPhoneAt(0).getNumber())
                     .iconRes(R.drawable.ic_phone_24);
         } else{
@@ -218,6 +220,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         if (businessSettings.getPhones().size() > 1){
             new SettingsLineInput(linePhone2)
                     .hint(getString(R.string.edit_phone))
+                    .inputType(InputType.TYPE_CLASS_PHONE)
                     .prefill(businessSettings.getPhoneAt(1).getNumber())
                     .iconRes(R.drawable.ic_phone_24);
         } else{
@@ -228,6 +231,7 @@ public class BusinessSettingsActivity extends AppCompatActivity implements TimeP
         lineEmail = findViewById(R.id.lineEmail);
         new SettingsLineInput(lineEmail)
                 .hint(getString(R.string.edit_email))
+                .inputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
                 .prefill(businessSettings.getEmail())
                 .iconRes(R.drawable.ic_email_24);
 

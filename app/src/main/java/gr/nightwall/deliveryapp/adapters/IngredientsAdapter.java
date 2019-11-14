@@ -9,21 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import gr.nightwall.deliveryapp.R;
+import gr.nightwall.deliveryapp.view_holders.SettingsLine1_ViewHolder;
 import gr.nightwall.deliveryapp.interfaces.OnSettingClickListener;
-import gr.nightwall.deliveryapp.view_holders.SettingsLine3_ViewHolder;
-import gr.nightwall.deliveryapp.interfaces.OnIngredientCategoriesClickListener;
-import gr.nightwall.deliveryapp.models.shop.IngredientCategory;
+import gr.nightwall.deliveryapp.models.shop.Ingredient;
 
-public class IngredientCategoriesAdapter extends RecyclerView.Adapter{
+public class IngredientsAdapter extends RecyclerView.Adapter{
 
     private Context context;
-    private ArrayList<IngredientCategory> data;
+    private ArrayList<Ingredient> data;
     private OnSettingClickListener onItemClick;
 
-    public IngredientCategoriesAdapter(Context context, ArrayList<IngredientCategory> data) {
+    public IngredientsAdapter(Context context, ArrayList<Ingredient> data) {
         this.context = context;
         this.data = data;
     }
@@ -31,32 +29,33 @@ public class IngredientCategoriesAdapter extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from( parent.getContext()).inflate(R.layout.layout_settings_line_3, parent, false);
+        View view = LayoutInflater.from( parent.getContext()).inflate(R.layout.layout_settings_line_1, parent, false);
 
-        return new SettingsLine3_ViewHolder(view) ;
+        return new SettingsLine1_ViewHolder(view) ;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder mHolder, int position) {
-        SettingsLine3_ViewHolder holder = (SettingsLine3_ViewHolder) mHolder;
+        SettingsLine1_ViewHolder holder = (SettingsLine1_ViewHolder) mHolder;
 
-        IngredientCategory item = data.get(position);
+        Ingredient item = data.get(position);
 
         holder.ivImage.setVisibility(View.INVISIBLE);
 
         holder.ivIcon.setVisibility(View.VISIBLE);
-        holder.ivIcon.setImageResource(R.drawable.ic_category_24);
+        holder.ivIcon.setImageResource(R.drawable.ic_arrow_right_24);
 
-        holder.tvTitle.setText(item.getName());
-        String ingredients = context.getString(R.string.options).toLowerCase();
-        String secondary = String.format(Locale.getDefault(),"%d %s", item.getIngredientsCount(), ingredients);
-        holder.tvSecondary.setText(secondary);
+        if(item.getPrice() == 0)
+            holder.tvTitle.setText(item.getName());
+        else
+            holder.tvTitle.setText(item.getNameWithPrice());
 
+        holder.ivSecondIcon.setVisibility(View.VISIBLE);
         holder.ivSecondIcon.setIcon(context.getResources().getDrawable(R.drawable.ic_delete_24));
         holder.ivSecondIcon.setIconTintResource(R.color.colorError);
         holder.ivSecondIcon.setOnClickListener(v -> onItemClick.onDeleteClick(position));
 
-        holder.parentView.setOnClickListener( v -> onItemClick.onActionClick(position));
+        holder.parentView.setOnClickListener(v -> onItemClick.onActionClick(position));
     }
 
     @Override

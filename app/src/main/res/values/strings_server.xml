@@ -29,10 +29,18 @@
     <string name="add_item_template">Νέο template</string>
     <string name="ingredient_categories">Επιλογές</string>
     <string name="ingredients">Συστατικά</string>
+    <string name="delete_ingredient_category_title">Διαγραφή επιλογής</string>
+    <string name="delete_ingredient_category_body">Η επιλογή θα διαγραφεί από το template</string>
 
     <!-- EDIT INGREDIENT CATEGORY -->
     <string name="edit_ingredient_category">Επεξεργασία επιλογής</string>
     <string name="add_ingredient_category">Νέα επιλογή</string>
+    <string name="delete_ingredient_title">Διαγραφή συστατικού</string>
+    <string name="delete_ingredient_body">Το συστατικό θα διαγραφεί από την επιλογή</string>
+
+    <!-- EDIT INGREDIENT -->
+    <string name="edit_ingredient">Επεξεργασία συστατικού</string>
+    <string name="add_ingredient">Νέο συστατικό</string>
 
 
 

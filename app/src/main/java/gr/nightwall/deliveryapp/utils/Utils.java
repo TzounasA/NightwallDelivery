@@ -123,7 +123,6 @@ public class Utils {
 
     public static void initRecyclerView(Context context,
                                         RecyclerView recyclerView, RecyclerView.Adapter adapter){
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -175,6 +174,16 @@ public class Utils {
         }
 
         return input.getText().toString();
+    }
+
+    public static double getDoubleFromSetting(ViewGroup setting) throws NumberFormatException{
+        String numberString = getTextFromSetting(setting);
+
+        if (numberString.isEmpty()){
+            throw new NumberFormatException();
+        }
+
+        return Double.parseDouble(numberString);
     }
 
     /* = = = = = = = = = = = = = = = *

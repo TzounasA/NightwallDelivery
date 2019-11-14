@@ -79,6 +79,7 @@ public class ItemTemplate {
         if (ingredientsCategories == null) {
             ingredientsCategories = new ArrayList<>();
             ingredientsCategories.add(category);
+            sortIngredientCategories();
             return;
         }
 
@@ -86,11 +87,13 @@ public class ItemTemplate {
         int index = getIngredientCategoryIndex(category.getId());
         if (index == -1){
             ingredientsCategories.add(category);
+            sortIngredientCategories();
             return;
         }
 
         // Existing item
         ingredientsCategories.set(index, category);
+        sortIngredientCategories();
     }
 
     public void deleteIngredientCategory(String id){
@@ -103,7 +106,29 @@ public class ItemTemplate {
             ingredientsCategories.remove(category);
     }
 
-    public IngredientCategory getIngredientCategoryById(String id){
+    public IngredientCategory getIngredientCategoryAt(int index){
+        if (ingredientsCategories == null)
+            return null;
+
+        if (index < 0 || index >= ingredientsCategories.size())
+            return null;
+
+        return ingredientsCategories.get(index);
+    }
+
+    @Exclude
+    public String getPriorityForNewIngredientCategory(){
+        int priority = (getIngredientCategoriesCount() + 1) * 10;
+
+        return String.format(Locale.getDefault(), "%03d", priority);
+    }
+
+
+    /* = = = = = = = = = = = = = = = *
+     *        PRIVATE HELPERS        *
+     * = = = = = = = = = = = = = = = */
+
+    private IngredientCategory getIngredientCategoryById(String id){
         for (IngredientCategory category : ingredientsCategories) {
             if (category.getId().equals(id)){
                 return category;
@@ -116,7 +141,7 @@ public class ItemTemplate {
     private int getIngredientCategoryIndex(String categoryId){
         int index = 0;
         for (IngredientCategory category : ingredientsCategories) {
-            if (category.getId().equals(id)){
+            if (category.getId().equals(categoryId)){
                 return index;
             }
 
@@ -126,11 +151,19 @@ public class ItemTemplate {
         return -1;
     }
 
-    @Exclude
-    public String getPriorityForNewIngredientCategory(){
-        int priority = (getIngredientCategoriesCount() + 1) * 10;
-
-        return String.format(Locale.getDefault(), "%03d", priority);
+    private void sortIngredientCategories(){
+        IngredientCategory temp;
+        for (int x = 0; x < ingredientsCategories.size(); x++)
+        {
+            for (int i = 0; i < ingredientsCategories.size()-i; i++) {
+                if (ingredientsCategories.get(i).getPriorityNumber().compareTo((ingredientsCategories.get(i+1).getPriorityNumber())) > 0)
+                {
+                    temp = ingredientsCategories.get(i);
+                    ingredientsCategories.set(i, ingredientsCategories.get(i+1));
+                    ingredientsCategories.set(i+1, temp);
+                }
+            }
+        }
     }
 
 }

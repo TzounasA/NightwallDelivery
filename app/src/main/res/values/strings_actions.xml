@@ -7,6 +7,7 @@
     <string name="cancel">Άκυρο</string>
     <string name="save">Αποθήκευση</string>
     <string name="ok">Εντάξει</string>
+    <string name="delete">Διαγραφή</string>
 
 
     <string name="changes_saved">Οι αλλαγές αποθηκεύτηκαν</string>

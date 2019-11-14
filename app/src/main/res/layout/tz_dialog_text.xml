@@ -34,8 +34,11 @@
                 style="@style/AppTheme.TextAppearance.Subtitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingStart="24dp"
                 android:paddingEnd="24dp"
+                android:paddingBottom="16dp"
+                android:alpha="0.7"
                 tools:text="@string/connect_to_internet"
                 app:layout_constraintTop_toBottomOf="@+id/dialogTitleLayout"
                 app:layout_goneMarginTop="24dp" />

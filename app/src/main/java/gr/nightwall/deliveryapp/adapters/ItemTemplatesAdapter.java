@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import gr.nightwall.deliveryapp.R;
-import gr.nightwall.deliveryapp.ViewHolders.SettingsLine1_ViewHolder;
+import gr.nightwall.deliveryapp.view_holders.SettingsLine1_ViewHolder;
 import gr.nightwall.deliveryapp.interfaces.OnItemTemplateClickListener;
 import gr.nightwall.deliveryapp.models.shop.ItemTemplate;
 

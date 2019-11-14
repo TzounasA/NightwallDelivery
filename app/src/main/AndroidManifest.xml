@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.business_management.EditIngredientCategoryActivity"
+        <activity
+            android:name=".activities.business_management.EditIngredientActivity"
             android:label="@string/edit_ingredient_category"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activities.business_management.EditIngredientCategoryActivity"
+            android:label="@string/edit_ingredient_category"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.business_management.EditItemTemplateActivity"
             android:label="@string/edit_item_template"

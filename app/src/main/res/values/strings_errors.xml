@@ -12,7 +12,7 @@
     <string name="error_password_characters">Τουλάχιστον 8 χαρακτήρες</string>
     <string name="error_password_incorrect">Λάθος κωδικός</string>
 
-    <string name="error_phone_numbers">Μη αποδεκτός αριθμός</string>
+    <string name="error_number">Μη αποδεκτός αριθμός</string>
 
     <string name="no_internet">Δεν υπάρχει internet</string>
     <string name="connect_to_internet">Συνδεθείτε στο internet και προσπαθήστε ξανά</string>

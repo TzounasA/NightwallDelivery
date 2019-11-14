@@ -1,4 +1,4 @@
-package gr.nightwall.deliveryapp.ViewHolders;
+package gr.nightwall.deliveryapp.view_holders;
 
 import android.view.View;
 import android.widget.TextView;
@@ -12,18 +12,18 @@ import com.google.android.material.button.MaterialButton;
 import de.hdodenhof.circleimageview.CircleImageView;
 import gr.nightwall.deliveryapp.R;
 
-public class SettingsLine3_ViewHolder extends RecyclerView.ViewHolder {
+public class SettingsLine1_ViewHolder extends RecyclerView.ViewHolder {
 
     public View parentView;
 
     public CircleImageView ivImage;
     public AppCompatImageView ivIcon;
 
-    public TextView tvTitle, tvSecondary;
+    public TextView tvTitle;
 
     public MaterialButton ivSecondIcon;
 
-    public SettingsLine3_ViewHolder(@NonNull View itemView) {
+    public SettingsLine1_ViewHolder(@NonNull View itemView) {
         super(itemView);
 
         parentView = itemView;
@@ -32,7 +32,6 @@ public class SettingsLine3_ViewHolder extends RecyclerView.ViewHolder {
         ivIcon = itemView.findViewById(R.id.ivIcon);
 
         tvTitle = itemView.findViewById(R.id.tvTitle);
-        tvSecondary = itemView.findViewById(R.id.tvSecondary);
 
         ivSecondIcon = itemView.findViewById(R.id.ivSecondIcon);
     }

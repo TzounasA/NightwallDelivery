@@ -79,7 +79,6 @@
     <string name="add_new_address_cap">ΠΡΟΣΘΗΚΗ ΝΕΑΣ ΔΙΕΥΘΥΝΣΗΣ</string>
     <string name="delete_address">Διαγραφη διεύθυνσης</string>
     <string name="delete_address_text">Η διεύθυνση \"%s\" θα διαγραφεί.</string>
-    <string name="delete">ΔΙΑΓΡΑΦΗ</string>
     <string name="street">Οδός</string>
     <string name="number">Αριθμός</string>
     <string name="floor">Όροφος</string>

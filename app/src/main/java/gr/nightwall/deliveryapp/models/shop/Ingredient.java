@@ -18,15 +18,11 @@ public class Ingredient {
      *          CONSTRUCTORS         *
      * = = = = = = = = = = = = = = = */
 
-    public Ingredient() {}
-
-    public Ingredient(String name, double price) {
-        this.name = name;
-        this.price = price;
-
-        id = Utils.generateID(name);
+    public Ingredient() {
+        id = Utils.generateID();
+        name = "";
+        price = 0;
     }
-
 
     /* = = = = = = = = = = = = = = = *
      *            SETTERS            *

@@ -35,4 +35,15 @@ public class SettingsLineInput extends SettingsLine {
         return this;
     }
 
+    public SettingsLineInput helperText(String helper){
+        inputLayout.setHelperText(helper);
+        return this;
+    }
+
+    public SettingsLineInput errorText(String error){
+        inputLayout.setErrorEnabled(true);
+        inputLayout.setError(error);
+        return this;
+    }
+
 }

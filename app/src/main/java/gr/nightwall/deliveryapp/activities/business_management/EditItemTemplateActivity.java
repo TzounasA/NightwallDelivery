@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import gr.nightwall.deliveryapp.adapters.ItemTemplatesAdapter;
 import gr.nightwall.deliveryapp.database.BusinessManagementDB;
 import gr.nightwall.deliveryapp.database.MenuDB;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
+import gr.nightwall.deliveryapp.interfaces.OnSettingClickListener;
 import gr.nightwall.deliveryapp.models.Phone;
 import gr.nightwall.deliveryapp.models.Time;
 import gr.nightwall.deliveryapp.models.shop.IngredientCategory;
@@ -31,6 +33,7 @@ import gr.nightwall.deliveryapp.models.shop.ItemTemplate;
 import gr.nightwall.deliveryapp.utils.Consts;
 import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.utils.Utils;
+import gr.nightwall.deliveryapp.views.CustomDialog;
 import gr.nightwall.deliveryapp.views.SettingsLineInput;
 import gr.nightwall.deliveryapp.views.SettingsLineSwitch;
 
@@ -48,6 +51,8 @@ public class EditItemTemplateActivity extends AppCompatActivity {
     private ViewGroup lineTemplateName;
 
     private ViewGroup savingIndicator;
+
+    private IngredientCategoriesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,8 +151,18 @@ public class EditItemTemplateActivity extends AppCompatActivity {
     }
 
     private void setupIngredientCategories(){
-        IngredientCategoriesAdapter adapter = new IngredientCategoriesAdapter(this, template.getIngredientsCategories());
-        adapter.setOnItemClick(this::openIngredientCategory);
+        adapter = new IngredientCategoriesAdapter(this, template.getIngredientsCategories());
+        adapter.setOnItemClick(new OnSettingClickListener() {
+            @Override
+            public void onActionClick(int index) {
+                openIngredientCategory(template.getIngredientCategoryAt(index));
+            }
+
+            @Override
+            public void onDeleteClick(int index) {
+                onDeleteIngredientCategory(index);
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.rvIngredientCategories);
         Utils.initRecyclerView(this, recyclerView, adapter);
@@ -170,6 +185,26 @@ public class EditItemTemplateActivity extends AppCompatActivity {
         IngredientCategory ingredientCategory = new IngredientCategory(priority);
 
         openIngredientCategory(ingredientCategory);
+    }
+
+    private void onDeleteIngredientCategory(int index) {
+        LinearLayout dialogHolder = findViewById(R.id.dialogHolder);
+
+        new CustomDialog(this, CustomDialog.DialogType.TEXT, dialogHolder)
+                .setTitle(this, R.string.delete_ingredient_category_title)
+                .setText(this, R.string.delete_ingredient_category_body)
+                .setBtnPositiveText(getString(R.string.delete))
+                .setBtnNegativeText(getString(R.string.cancel))
+                .setOnPositiveClickListener(dialog -> deleteIngredientCategory(index))
+                .setPositiveTextColorResource(getResources().getColor(R.color.colorError))
+                .setPositiveRippleColorResource(R.color.colorError)
+                .build(this)
+                .show();
+    }
+
+    private void deleteIngredientCategory(int index) {
+        adapter.removeItemAt(index);
+        saveChanges();
     }
 
     //endregion

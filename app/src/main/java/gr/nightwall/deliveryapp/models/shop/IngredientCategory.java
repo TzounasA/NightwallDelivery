@@ -73,19 +73,31 @@ public class IngredientCategory {
      *             EDITS             *
      * = = = = = = = = = = = = = = = */
 
-    public void addIngredient(Ingredient ingredient){
-        checkIfNull();
-        ingredients.add(ingredient);
+    public void saveIngredient(int index, Ingredient ingredient){
+        if (ingredients == null) {
+            ingredients = new ArrayList<>();
+            ingredients.add(ingredient);
+            return;
+        }
+
+        // New item
+        if (index < 0 || index >= ingredients.size()){
+            ingredients.add(ingredient);
+            return;
+        }
+
+        // Edit item
+        ingredients.set(index, ingredient);
     }
 
-    public void removeIngredientAt(int index){
-        checkIfNull();
+    public void deleteIngredientAt(int index){
+        if (ingredients == null)
+            return;
+
+        if (ingredients.size() <= index)
+            return;
+
         ingredients.remove(index);
-    }
-
-    public void removeIngredient(Ingredient ingredient){
-        checkIfNull();
-        ingredients.remove(ingredient);
     }
 
 
@@ -110,7 +122,9 @@ public class IngredientCategory {
     }
 
     public ArrayList<Ingredient> getIngredients() {
-        checkIfNull();
+        if (ingredients == null)
+            ingredients = new ArrayList<>();
+
         return ingredients;
     }
 
@@ -133,19 +147,20 @@ public class IngredientCategory {
 
     @Exclude
     public int getIngredientsCount(){
-        checkIfNull();
+        if (ingredients == null)
+            return 0;
+
         return ingredients.size();
     }
 
-
-    /* = = = = = = = = = = = = = = = *
-     *        PRIVATE METHODS        *
-     * = = = = = = = = = = = = = = = */
-
-    @Exclude
-    private void checkIfNull(){
+    public Ingredient getIngredientAt(int index){
         if (ingredients == null)
-            ingredients = new ArrayList<>();
+            return null;
+
+        if (index < 0 || index >= ingredients.size())
+            return null;
+
+        return ingredients.get(index);
     }
 
 
