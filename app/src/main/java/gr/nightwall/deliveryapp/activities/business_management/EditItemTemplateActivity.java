@@ -181,7 +181,7 @@ public class EditItemTemplateActivity extends AppCompatActivity {
     }
 
     public void addNewIngredientCategory(View v){
-        String priority = template.getPriorityForNewIngredientCategory();
+        String priority = Utils.getPriorityFromListCount(template.getIngredientCategoriesCount());
         IngredientCategory ingredientCategory = new IngredientCategory(priority);
 
         openIngredientCategory(ingredientCategory);

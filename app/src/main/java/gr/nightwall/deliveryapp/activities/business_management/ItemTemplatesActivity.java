@@ -100,7 +100,6 @@ public class ItemTemplatesActivity extends AppCompatActivity {
         return true;
     }
 
-
     //endregion
 
     //region PRINT PAGE

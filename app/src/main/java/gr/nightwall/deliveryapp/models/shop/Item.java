@@ -18,10 +18,10 @@ public class Item {
     private String id, name;
     private String categoryId;
 
-    private double price;
+    private float startPrice;
     private String priorityNumber;
 
-    private String templateID;
+    private String templateId;
     private ArrayList<String> selectedIngredientsIDs;
 
     // Optional
@@ -30,24 +30,27 @@ public class Item {
     // For orders
     private int quantity;
     private String additionalInfo;
-    private float ingredientsPrice, finalPrice;
+    private float ingredientsPrice;
     private Map<String, ArrayList<String>> ingredientsNames;
 
     //endregion
 
     //region CONSTRUCTORS
 
-    public Item() {}
-
-    public Item(String categoryId, String name) {
-        this.categoryId = categoryId;
-        this.name = name;
-
+    public Item() {
         id = Utils.generateID(name);
+        templateId = "";
+        name = "";
 
         description = "";
         imageURL = "";
         ingredientsNames = new HashMap<>();
+    }
+
+    public Item(String categoryId, String priority){
+        this();
+        this.categoryId = categoryId;
+        priorityNumber = priority;
     }
 
     //endregion
@@ -58,16 +61,16 @@ public class Item {
         this.name = name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setStartPrice(float startPrice) {
+        this.startPrice = startPrice;
     }
 
     public void setPriorityNumber(String priorityNumber) {
         this.priorityNumber = priorityNumber;
     }
 
-    public void setTemplateID(String templateID) {
-        this.templateID = templateID;
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
     }
 
     public void setSelectedIngredientsIDs(ArrayList<String> selectedIngredientsIDs) {
@@ -110,16 +113,16 @@ public class Item {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public float getStartPrice() {
+        return startPrice;
     }
 
     public String getPriorityNumber() {
         return priorityNumber;
     }
 
-    public String getTemplateID() {
-        return templateID;
+    public String getTemplateId() {
+        return templateId;
     }
 
     public ArrayList<String> getSelectedIngredientsIDs() {
@@ -150,8 +153,9 @@ public class Item {
         return ingredientsPrice;
     }
 
+    @Exclude
     public float getFinalPrice() {
-        return finalPrice;
+        return startPrice + ingredientsPrice;
     }
 
     //endregion
@@ -159,13 +163,18 @@ public class Item {
     //region GET MORE INFO
 
     @Exclude
-    public String getPriceString(){
-        return String.format(Locale.getDefault(), "%.2f €", price);
+    public String getNameWithFinalPrice(){
+        return String.format(Locale.getDefault(), "%s (%.2f €)",name, getFinalPrice());
     }
 
     @Exclude
-    public String getPriceFormatted(){
-        return String.format(Locale.US, "%.2f", price);
+    public String getStartPriceString(){
+        return String.format(Locale.getDefault(), "%.2f €", startPrice);
+    }
+
+    @Exclude
+    public String getStartPriceFormatted(){
+        return String.format(Locale.US, "%.2f", startPrice);
     }
 
     @Exclude
@@ -180,12 +189,12 @@ public class Item {
 
     @Exclude
     public String getFinalPriceString(){
-        return String.format(Locale.getDefault(), "%.2f €", finalPrice);
+        return String.format(Locale.getDefault(), "%.2f €", getFinalPrice());
     }
 
     @Exclude
     public String getFinalPriceFormatted(){
-        return String.format(Locale.US, "%.2f", finalPrice);
+        return String.format(Locale.US, "%.2f", getFinalPrice());
     }
 
     //endregion
@@ -215,7 +224,6 @@ public class Item {
         ingredientsNames.get(ingredientCategoryName).add(ingredient.getName());
 
         ingredientsPrice += ingredient.getPrice();
-        finalPrice += ingredient.getPrice();
     }
 
     @Exclude

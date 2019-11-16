@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.utils.Navigation;
-import gr.nightwall.deliveryapp.views.SettingsLine;
 import gr.nightwall.deliveryapp.views.SettingsLineText;
 
 public class BusinessManagementActivity extends AppCompatActivity {
@@ -85,7 +84,7 @@ public class BusinessManagementActivity extends AppCompatActivity {
     }
 
     private void editMenu(){
-
+        Navigation.startActivity(CategoriesActivity.class);
     }
 
 }

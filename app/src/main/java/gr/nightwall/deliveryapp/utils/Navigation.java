@@ -28,6 +28,15 @@ public class Navigation {
         context.startActivity(intent);
     }
 
+    public static void startActivity(Class newClass, int extra){
+        Context context = App.getContext();
+
+        Intent intent = new Intent(context, newClass).setFlags(FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(ITEM_EXTRA, extra);
+
+        context.startActivity(intent);
+    }
+
     public static void errorToast(Context context){
         Toast.makeText(context, context.getString(R.string.error_something_went_wrong), Toast.LENGTH_SHORT).show();
     }

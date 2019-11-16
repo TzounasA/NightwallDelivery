@@ -9,7 +9,7 @@ import gr.nightwall.deliveryapp.utils.Utils;
 public class Ingredient {
 
     private String id, name;
-    private double price;
+    private float price;
 
     // For orders
     private boolean selected;
@@ -32,7 +32,7 @@ public class Ingredient {
         this.name = name;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -53,7 +53,7 @@ public class Ingredient {
         return name;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 

@@ -10,37 +10,32 @@ import gr.nightwall.deliveryapp.utils.Utils;
 
 public class Category {
 
-    private String id, name, priority;
+    private String id, name, priorityNumber;
     private String description, imageURL;
     private List<String> itemsIds;
     private boolean visible = true;
 
-    private CategoryType categoryType;
+    //private Type categoryType;
 
+    
     /* = = = = = = = = = = = = = = = *
      *          CONSTRUCTORS         *
      * = = = = = = = = = = = = = = = */
 
-    public Category() {}
+    public Category() {
+        id = Utils.generateID();
 
-    public Category(String name, String priority) {
-        this.name = name;
-        this.priority = priority;
-
-        id = name.trim().replace(" ", "_").replace("/", "-");
-        id = id + "_" + System.currentTimeMillis()/1000;
-        id = Utils.fixDatabasePath(id);
-
+        name = "";
         description = "";
-        imageURL = "";
+
+        itemsIds = new ArrayList<>();
+        //categoryType = new CategoryType(CategoryType.Type.FOOD);
     }
 
-    public Category(String name, String priority, CategoryType categoryType) {
-        this(name, priority);
-
-        this.categoryType = categoryType;
+    public Category(String priority){
+        this();
+        priorityNumber = priority;
     }
-
 
     /* = = = = = = = = = = = = = = = *
      *            SETTERS            *
@@ -58,13 +53,13 @@ public class Category {
         this.imageURL = imageURL;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public void setPriorityNumber(String priority) {
+        this.priorityNumber = priority;
     }
 
-    public void setCategoryType(CategoryType categoryType) {
-        this.categoryType = categoryType;
-    }
+//    public void setCategoryType(CategoryType categoryType) {
+//        this.categoryType = categoryType;
+//    }
 
     public void setVisible(boolean visible) {
         this.visible = visible;
@@ -116,13 +111,13 @@ public class Category {
         return itemsIds;
     }
 
-    public String getPriority() {
-        return priority;
+    public String getPriorityNumber() {
+        return priorityNumber;
     }
 
-    public CategoryType getCategoryType() {
-        return categoryType;
-    }
+//    public CategoryType getCategoryType() {
+//        return categoryType;
+//    }
 
     public boolean isVisible() {
         return visible;
@@ -139,20 +134,20 @@ public class Category {
         return itemsIds.size();
     }
 
-    @Exclude
-    public String getCategoryTypeName(){
-        return categoryType == null? "" : categoryType.getName();
-    }
-
-    @Exclude
-    public int getCategoryTypeIconRes(){
-        return categoryType == null? R.drawable.ic_category_24 : categoryType.getIconRes();
-    }
-
-    @Exclude
-    public int getCategoryTypeID(){
-        return categoryType == null? -1 : categoryType.getID();
-    }
+//    @Exclude
+//    public String getCategoryTypeName(){
+//        return categoryType == null? "" : categoryType.getName();
+//    }
+//
+//    @Exclude
+//    public int getCategoryTypeIconRes(){
+//        return categoryType == null? R.drawable.ic_category_24 : categoryType.getIconRes();
+//    }
+//
+//    @Exclude
+//    public int getCategoryTypeID(){
+//        return categoryType == null? -1 : categoryType.getID();
+//    }
 
 
 

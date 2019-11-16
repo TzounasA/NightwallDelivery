@@ -10,10 +10,9 @@ public final class Consts {
     public static final String DB_USERS             = "Users";
     public static final String DB_BUSINESS_SETTINGS = "Business Settings";
     public static final String DB_ITEM_TEMPLATES    = "Item Templates";
-
-
     public static final String DB_CATEGORIES = "Categories";
     public static final String DB_ITEMS = "Items";
+
     public static final String DB_INGREDIENT_CATEGORIES = "Ingredient Categories";
     public static final String DB_INGREDIENTS = "Ingredients";
     public static final String DB_ORDERS = "Orders";

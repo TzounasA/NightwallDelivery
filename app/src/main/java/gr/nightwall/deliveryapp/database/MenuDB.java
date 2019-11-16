@@ -7,6 +7,8 @@ import gr.nightwall.deliveryapp.database.interfaces.OnGetListListener;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
 import gr.nightwall.deliveryapp.models.shop.*;
 
+import static gr.nightwall.deliveryapp.database.FirebaseDB.Reference.CATEGORIES;
+import static gr.nightwall.deliveryapp.database.FirebaseDB.Reference.ITEMS;
 import static gr.nightwall.deliveryapp.database.FirebaseDB.Reference.ITEM_TEMPLATES;
 
 public class MenuDB {
@@ -29,40 +31,40 @@ public class MenuDB {
 
     //region ITEMS
 
-    public static void addItem(Item item){
-
+    public static void saveItem(Item item, OnSaveDataListener onSaveDataListener){
+        FirebaseDB.saveItemWithId(ITEMS, item, item.getId(), onSaveDataListener);
     }
 
-    public static void saveItem(Item item){
-
-    }
-
-    public static ArrayList<Item> getAllItems(){
-        return null;
+    public static void getItemsOfCategory(String categoryId, OnGetListListener onGetListListener){
+        FirebaseDB.getList(ITEMS, Item.class, "categoryId", categoryId, onGetListListener);
     }
 
     public static Item getItemByID(String id){
         return null;
     }
 
+    public static void deleteItem(Item item, OnSaveDataListener onSaveDataListener){
+        FirebaseDB.deleteValueOfId(ITEMS, item.getId(), onSaveDataListener);
+    }
+
     //endregion
 
     //region CATEGORIES
 
-    public static void addCategory(Category category){
-
+    public static void saveCategory(Category category, OnSaveDataListener onSaveDataListener){
+        FirebaseDB.saveItemWithId(CATEGORIES, category, category.getId(), onSaveDataListener);
     }
 
-    public static void saveCategory(Category category){
-
-    }
-
-    public static ArrayList<Category> getAllCategories(){
-        return null;
+    public static void getAllCategories(OnGetListListener onGetListListener){
+        FirebaseDB.getList(CATEGORIES, Category.class, "priorityNumber", onGetListListener);
     }
 
     public static Category getCategoryByID(String id){
         return null;
+    }
+
+    public static void deleteCategory(Category category, OnSaveDataListener onSaveDataListener){
+        FirebaseDB.deleteValueOfId(CATEGORIES, category.getId(), onSaveDataListener);
     }
 
     //endregion

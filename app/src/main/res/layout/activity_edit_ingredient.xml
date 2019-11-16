@@ -19,7 +19,7 @@
             android:id="@+id/lineIngredientName"
             layout="@layout/layout_settings_line_input"/>
 
-        <!-- Name -->
+        <!-- Price -->
         <include
             android:id="@+id/lineIngredientPrice"
             android:layout_height="wrap_content"
@@ -37,5 +37,6 @@
 
     <include
         layout="@layout/screen_top_layer"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

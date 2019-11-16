@@ -42,6 +42,8 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.UUID;
 
 import androidx.core.content.ContextCompat;
@@ -50,6 +52,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.models.shop.Cart;
+import gr.nightwall.deliveryapp.models.shop.IngredientCategory;
+import gr.nightwall.deliveryapp.models.shop.Item;
 
 public class Utils {
 
@@ -62,6 +66,34 @@ public class Utils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+
+    /* = = = = = = = = = = = = = = = *
+     *             LISTS             *
+     * = = = = = = = = = = = = = = = */
+
+    public static String getPriorityFromListCount(int count){
+        int priority = (count + 1) * 10;
+
+        return String.format(Locale.getDefault(), "%03d", priority);
+    }
+
+    public static ArrayList<Item> sortItems(ArrayList<Item> items){
+        Item temp;
+
+        for (int x = 0; x < items.size(); x++)
+        {
+            for (int i = 0; i < items.size()-i; i++) {
+                if (items.get(i).getPriorityNumber().compareTo((items.get(i+1).getPriorityNumber())) > 0)
+                {
+                    temp = items.get(i);
+                    items.set(i, items.get(i+1));
+                    items.set(i+1, temp);
+                }
+            }
+        }
+
+        return items;
+    }
 
     /* = = = = = = = = = = = = = = = *
      *      GET FIREBASE STORAGE     *
@@ -176,14 +208,14 @@ public class Utils {
         return input.getText().toString();
     }
 
-    public static double getDoubleFromSetting(ViewGroup setting) throws NumberFormatException{
+    public static float getFloatFromSetting(ViewGroup setting) throws NumberFormatException{
         String numberString = getTextFromSetting(setting);
 
         if (numberString.isEmpty()){
             throw new NumberFormatException();
         }
 
-        return Double.parseDouble(numberString);
+        return Float.parseFloat(numberString);
     }
 
     /* = = = = = = = = = = = = = = = *

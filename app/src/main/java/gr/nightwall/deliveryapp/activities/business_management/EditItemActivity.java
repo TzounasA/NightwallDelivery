@@ -3,8 +3,8 @@ package gr.nightwall.deliveryapp.activities.business_management;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -14,34 +14,26 @@ import com.google.android.material.button.MaterialButton;
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.database.MenuDB;
 import gr.nightwall.deliveryapp.database.interfaces.OnSaveDataListener;
-import gr.nightwall.deliveryapp.models.shop.Ingredient;
-import gr.nightwall.deliveryapp.models.shop.IngredientCategory;
-import gr.nightwall.deliveryapp.models.shop.ItemTemplate;
+import gr.nightwall.deliveryapp.models.shop.Item;
 import gr.nightwall.deliveryapp.utils.Consts;
 import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.utils.Utils;
 import gr.nightwall.deliveryapp.views.SettingsLineInput;
 
-import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA;
-import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA_2;
-
-public class EditIngredientActivity extends AppCompatActivity {
+public class EditItemActivity extends AppCompatActivity {
 
     // Data
-    private ItemTemplate template;
-    private IngredientCategory category;
-    private Ingredient ingredient;
-    private int ingredientIndex;
+    private Item item;
 
     //Views
-    private ViewGroup lineName, linePrice;
+    private ViewGroup linePriority, lineName, lineDescription, lineStartPrice;
 
     private ViewGroup savingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_ingredient);
+        setContentView(R.layout.activity_edit_item);
 
         getExtra();
         init();
@@ -49,16 +41,11 @@ public class EditIngredientActivity extends AppCompatActivity {
     }
 
     private void getExtra(){
-        String templateJson = getIntent().getStringExtra(Consts.ITEM_EXTRA);
-        String categoryJson = getIntent().getStringExtra(ITEM_EXTRA_2);
-        String ingredientJson = getIntent().getStringExtra(Consts.ITEM_EXTRA_3);
-        ingredientIndex = getIntent().getIntExtra(Consts.ITEM_INT_EXTRA, -1);
+        String itemJson = getIntent().getStringExtra(Consts.ITEM_EXTRA);
 
-        template = Utils.fromJson(templateJson, ItemTemplate.class);
-        category = Utils.fromJson(categoryJson, IngredientCategory.class);
-        ingredient = Utils.fromJson(ingredientJson, Ingredient.class);
+        item = Utils.fromJson(itemJson, Item.class);
 
-        if (template== null || category == null || ingredient == null){
+        if (item == null){
             Navigation.errorToast(this);
             finish();
         }
@@ -80,8 +67,8 @@ public class EditIngredientActivity extends AppCompatActivity {
 
         bar.setDisplayHomeAsUpEnabled(true);
 
-        if (ingredient.getName().isEmpty()){
-            bar.setTitle(getString(R.string.add_ingredient));
+        if (item.getName().isEmpty()){
+            bar.setTitle(getString(R.string.add_item));
         }
     }
 
@@ -113,18 +100,36 @@ public class EditIngredientActivity extends AppCompatActivity {
     //region SET UP SCREEN
 
     private void setupScreen(){
+        setupInputs();
+    }
+
+    private void setupInputs() {
+        // Priority
+        linePriority = findViewById(R.id.lineItemPriority);
+        new SettingsLineInput(linePriority)
+                .hint(getString(R.string.priority))
+                .prefill(item.getPriorityNumber())
+                .inputType(InputType.TYPE_CLASS_NUMBER);
+
         // Name
-        lineName = findViewById(R.id.lineIngredientName);
+        lineName = findViewById(R.id.lineItemName);
         new SettingsLineInput(lineName)
                 .hint(getString(R.string.title))
-                .prefill(ingredient.getName())
-                .iconRes(R.drawable.ic_arrow_right_24);
+                .prefill(item.getName())
+                .iconRes(R.drawable.ic_category_24);
 
-        // Price
-        linePrice = findViewById(R.id.lineIngredientPrice);
-        new SettingsLineInput(linePrice)
+        // Description
+        lineDescription = findViewById(R.id.lineItemDescription);
+        new SettingsLineInput(lineDescription)
+                .hint(getString(R.string.description))
+                .prefill(item.getDescription())
+                .iconRes(R.drawable.id_description);
+
+        // Start Price
+        lineStartPrice = findViewById(R.id.lineItemStartPrice);
+        new SettingsLineInput(lineStartPrice)
                 .hint(getString(R.string.price))
-                .prefill(ingredient.getPrice() + "")
+                .prefill(item.getStartPrice() + "")
                 .helperText(getString(R.string.dot_for_comma))
                 .iconRes(R.drawable.ic_euro);
     }
@@ -133,58 +138,50 @@ public class EditIngredientActivity extends AppCompatActivity {
 
     //region SAVE CHANGES
 
-    private void saveChangesFromInputs(){
-        ingredient.setName(Utils.getTextFromSetting(lineName));
+    private void saveChangesFromInputs() {
+        item.setPriorityNumber(Utils.getTextFromSetting(linePriority));
+
+        item.setName(Utils.getTextFromSetting(lineName));
+        item.setDescription(Utils.getTextFromSetting(lineDescription));
 
         float price;
         try {
-            price = Utils.getFloatFromSetting(linePrice);
+            price = Utils.getFloatFromSetting(lineStartPrice);
         } catch (NumberFormatException e) {
-            new SettingsLineInput(linePrice)
+            new SettingsLineInput(lineStartPrice)
                     .errorText(getString(R.string.error_number));
             return;
         }
 
-        ingredient.setPrice(price);
+        item.setStartPrice(price);
 
         saveChanges();
     }
 
     private void saveChanges() {
-        category.saveIngredient(ingredientIndex, ingredient);
-        template.saveIngredientCategory(category);
-
         savingIndicator.setVisibility(View.VISIBLE);
 
         OnSaveDataListener saveListener = new OnSaveDataListener() {
             @Override
             public void onSuccess() {
                 savingIndicator.setVisibility(View.GONE);
-                Toast.makeText(EditIngredientActivity.this,
+                setupScreen();
+                Toast.makeText(EditItemActivity.this,
                         getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
-
-                returnResult();
             }
 
             @Override
             public void onFail() {
                 savingIndicator.setVisibility(View.GONE);
-                Navigation.errorToast(EditIngredientActivity.this);
+                Navigation.errorToast(EditItemActivity.this);
             }
         };
 
-        MenuDB.saveItemTemplate(template, saveListener);
-    }
-
-    private void returnResult(){
-        Intent intent = new Intent();
-        intent.putExtra(ITEM_EXTRA, Utils.toJson(template));
-        intent.putExtra(ITEM_EXTRA_2, Utils.toJson(category));
-
-        setResult(RESULT_OK, intent);
-        finish();
+        MenuDB.saveItem(item, saveListener);
     }
 
     //endregion
 
 }
+
+// TODO SET TEMPLATE
