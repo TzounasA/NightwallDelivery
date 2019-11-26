@@ -153,6 +153,7 @@ public class IngredientCategory {
         return ingredients.size();
     }
 
+    @Exclude
     public Ingredient getIngredientAt(int index){
         if (ingredients == null)
             return null;
@@ -162,7 +163,6 @@ public class IngredientCategory {
 
         return ingredients.get(index);
     }
-
 
     /* = = = = = = = = = = = = = = = *
      *            USELESS            *

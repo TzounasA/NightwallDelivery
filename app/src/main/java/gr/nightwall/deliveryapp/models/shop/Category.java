@@ -13,7 +13,7 @@ public class Category {
     private String id, name, priorityNumber;
     private String description, imageURL;
     private List<String> itemsIds;
-    private boolean visible = true;
+    private boolean visible;
 
     //private Type categoryType;
 
@@ -27,6 +27,7 @@ public class Category {
 
         name = "";
         description = "";
+        visible = false;
 
         itemsIds = new ArrayList<>();
         //categoryType = new CategoryType(CategoryType.Type.FOOD);

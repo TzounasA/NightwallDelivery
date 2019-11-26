@@ -153,6 +153,9 @@ public class ItemTemplate {
 
     private void sortIngredientCategories(){
         IngredientCategory temp;
+        if (ingredientsCategories.size() <= 1)
+            return;;
+
         for (int x = 0; x < ingredientsCategories.size(); x++)
         {
             for (int i = 0; i < ingredientsCategories.size()-i; i++) {

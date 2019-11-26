@@ -20,6 +20,11 @@
             android:layout_marginBottom="32dp"
             android:orientation="vertical">
 
+            <!-- Is Visible -->
+            <include
+                android:id="@+id/lineCategoryVisibility"
+                layout="@layout/layout_settings_line_2_switch"/>
+
             <!-- Priority -->
             <include
                 android:id="@+id/lineCategoryPriority"

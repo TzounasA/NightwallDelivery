@@ -28,6 +28,7 @@ import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.utils.Utils;
 import gr.nightwall.deliveryapp.views.CustomDialog;
 import gr.nightwall.deliveryapp.views.SettingsLineInput;
+import gr.nightwall.deliveryapp.views.SettingsLineSwitch;
 
 public class EditCategoryActivity extends AppCompatActivity {
 
@@ -59,17 +60,17 @@ public class EditCategoryActivity extends AppCompatActivity {
         loadItems();
     }
 
-    private void getExtra(){
+    private void getExtra() {
         String categoryJson = getIntent().getStringExtra(Consts.ITEM_EXTRA);
 
         category = Utils.fromJson(categoryJson, Category.class);
-        if (category == null){
+        if (category == null) {
             Navigation.errorToast(this);
             finish();
         }
     }
 
-    private void loadItems(){
+    private void loadItems() {
         savingIndicator.setVisibility(View.VISIBLE);
 
         OnGetListListener getDataListener = new OnGetListListener() {
@@ -80,7 +81,7 @@ public class EditCategoryActivity extends AppCompatActivity {
                 for (T item : list) {
                     Item newItem = (Item) item;
 
-                    if (newItem != null){
+                    if (newItem != null) {
                         items.add(newItem);
                     }
                 }
@@ -109,13 +110,13 @@ public class EditCategoryActivity extends AppCompatActivity {
 
     private void initToolbar() {
         ActionBar bar = getSupportActionBar();
-        if (bar == null){
+        if (bar == null) {
             return;
         }
 
         bar.setDisplayHomeAsUpEnabled(true);
 
-        if (category.getName().isEmpty()){
+        if (category.getName().isEmpty()) {
             bar.setTitle(getString(R.string.add_category));
         }
     }
@@ -125,7 +126,7 @@ public class EditCategoryActivity extends AppCompatActivity {
         savingIndicator.setVisibility(View.GONE);
     }
 
-    private void initActionButtons(){
+    private void initActionButtons() {
         // Cancel
         MaterialButton btnCancel = findViewById(R.id.btnCancel);
         btnCancel.setText(getString(R.string.cancel));
@@ -147,11 +148,26 @@ public class EditCategoryActivity extends AppCompatActivity {
 
     //region SET UP SCREEN
 
-    private void setupScreen(){
+    private void setupScreen() {
         setupInputs();
     }
 
     private void setupInputs() {
+        // Auto operation
+        int textRes = category.isVisible() ? R.string.category_is_visible_body_on
+                : R.string.category_is_visible_body_off;
+
+        SettingsLineSwitch liveLine = new SettingsLineSwitch(findViewById(R.id.lineCategoryVisibility))
+                .title(getString(R.string.category_is_visible_title))
+                .secondaryText(getString(textRes))
+                .checked(category.isVisible());
+
+        liveLine.switchCheckedChangeListener((sw, checked) -> {
+            liveLine.secondaryText(getString(textRes));
+
+            setCategoryVisible(checked);
+        });
+
         // Priority
         linePriority = findViewById(R.id.lineCategoryPriority);
         new SettingsLineInput(linePriority)
@@ -243,6 +259,10 @@ public class EditCategoryActivity extends AppCompatActivity {
         MenuDB.deleteItem(items.get(index), saveListener);
     }
 
+    private void setCategoryVisible(boolean isVisible) {
+        category.setVisible(isVisible);
+        saveChanges();
+    }
 
     //endregion
 

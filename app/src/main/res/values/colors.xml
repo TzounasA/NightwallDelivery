@@ -45,6 +45,9 @@
     <color name="onPrimary70">#B3FFFFFF</color>
     <color name="onSecondary54">#8AFFFFFF</color>
 
+    <color name="onSurface60">#99000000</color>
+    <color name="onSurface30">#4D000000</color>
+
 
     <!-- EXTRA -->
     <color name="white">#ffffff</color>

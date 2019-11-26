@@ -46,6 +46,9 @@
     <string name="categories">Κατηγορίες</string>
     <string name="edit_category">Επεξεργασία κατηγορίας</string>
     <string name="add_category">Νέα κατηγορία</string>
+    <string name="category_is_visible_title">LIVE</string>
+    <string name="category_is_visible_body_on">Ορατή στον κατάλογο</string>
+    <string name="category_is_visible_body_off">Μη ορατή στον κατάλογο</string>
     <string name="items">Προϊόντα</string>
     <string name="delete_category_title">Διαγραφή κατηγορίας</string>
     <string name="delete_category_body">Η κατηγορίας και ΟΛΑ τα προϊόντα της θα διαγραφούν από το μενού</string>
@@ -55,6 +58,8 @@
     <!-- EDIT ITEMS -->
     <string name="edit_item">Επεξεργασία προϊόντος</string>
     <string name="add_item">Νέο προϊόν</string>
+    <string name="item_template">Template προϊόντος</string>
+    <string name="basic_ingredients">Επιλεγμένα συστατικά</string>
 
 
 
@@ -62,6 +67,7 @@
     <string name="title">Τίτλος</string>
     <string name="description">Περιγραφή</string>
     <string name="no_description">Χωρίς περιγραφή</string>
+    <string name="start_price">Αρχική τιμή</string>
     <string name="price">Τιμή</string>
     <string name="dot_for_comma">Τελεία για υποδιαστολή</string>
 

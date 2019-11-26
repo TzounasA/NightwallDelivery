@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+<selector xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_activated="true">
         <layer-list>
             <item>
                 <shape android:shape="rectangle" android:padding="8dp">
-                    <stroke android:color="@color/onSurface"
+                    <stroke
+                        android:color="@color/colorPrimary"
+                        android:width="2dp"/>
+
+                    <corners
+                        android:radius="@dimen/edit_text_corner_radius" />
+
+                    <padding android:bottom="3dp"
+                        android:left="3dp"
+                        android:right="5dp"
+                        android:top="3dp" />
+                </shape>
+            </item>
+
+            <item>
+                <bitmap android:gravity="center_vertical|right"
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_arrow_drop_down_24dp" />
+            </item>
+        </layer-list>
+    </item>
+
+    <item>
+        <layer-list>
+            <item>
+                <shape
+                    android:shape="rectangle"
+                    android:padding="8dp">
+                    <stroke
+                        android:color="@color/onSurface30"
                         android:width="1dp"/>
 
                     <corners
@@ -19,9 +51,11 @@
 
             <item>
                 <bitmap android:gravity="center_vertical|right"
-                    android:tint="@color/onSurface"
+                    android:tint="@color/onSurface60"
+
                     android:src="@drawable/ic_arrow_drop_down_24dp" />
             </item>
         </layer-list>
     </item>
+
 </selector>

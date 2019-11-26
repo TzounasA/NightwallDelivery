@@ -97,6 +97,16 @@ public class Item {
         this.additionalInfo = additionalInfo;
     }
 
+    public void clearIngredients(){
+        if (selectedIngredientsIDs != null)
+            selectedIngredientsIDs.clear();
+
+        if (ingredientsNames != null)
+            ingredientsNames.clear();
+
+        ingredientsPrice = 0;
+    }
+
     //endregion
 
     //region GETTERS
@@ -151,6 +161,10 @@ public class Item {
 
     public float getIngredientsPrice() {
         return ingredientsPrice;
+    }
+
+    public Map<String, ArrayList<String>> getIngredientsNames() {
+        return ingredientsNames;
     }
 
     @Exclude
@@ -210,20 +224,62 @@ public class Item {
     }
 
     public void addIngredient(String ingredientCategoryName, Ingredient ingredient){
+        // Checks
         if(ingredientsNames == null){
             ingredientsNames = new HashMap<>();
+        }
+
+        if(selectedIngredientsIDs == null){
+            selectedIngredientsIDs = new ArrayList<>();
         }
 
         if (ingredientCategoryName == null)
             return;
 
+        // Add
         if (!ingredientsNames.containsKey(ingredientCategoryName)) {
-            ingredientsNames.put(ingredientCategoryName, new ArrayList<String>());
+            ingredientsNames.put(ingredientCategoryName, new ArrayList<>());
         }
 
-        ingredientsNames.get(ingredientCategoryName).add(ingredient.getName());
+        if (!ingredientsNames.get(ingredientCategoryName).contains(ingredient.getName()))
+            ingredientsNames.get(ingredientCategoryName).add(ingredient.getName());
 
-        ingredientsPrice += ingredient.getPrice();
+        if (!selectedIngredientsIDs.contains(ingredient.getId())){
+            selectedIngredientsIDs.add(ingredient.getId());
+            ingredientsPrice += ingredient.getPrice();
+        }
+    }
+
+
+    public void removeIngredient(String ingredientCategoryName, Ingredient ingredient){
+        // Check
+        if (ingredientCategoryName == null || ingredient == null)
+            return;
+
+        if (ingredientsNames == null || selectedIngredientsIDs == null)
+            return;
+
+        if (!ingredientsNames.containsKey(ingredientCategoryName))
+            return;
+
+        if (ingredientsNames.get(ingredientCategoryName) == null)
+            return;
+
+        // Remove
+        try {
+            ingredientsNames.get(ingredientCategoryName).remove(ingredient.getName());
+
+            if (ingredientsNames.get(ingredientCategoryName).isEmpty())
+                ingredientsNames.remove(ingredientCategoryName);
+
+            boolean removed = selectedIngredientsIDs.remove(ingredient.getId());
+
+            if (removed)
+                ingredientsPrice -= ingredient.getPrice();
+
+        } catch (Exception ignored) {
+
+        }
     }
 
     @Exclude

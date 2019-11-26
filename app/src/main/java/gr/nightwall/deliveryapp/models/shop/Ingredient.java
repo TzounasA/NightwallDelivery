@@ -11,9 +11,6 @@ public class Ingredient {
     private String id, name;
     private float price;
 
-    // For orders
-    private boolean selected;
-
     /* = = = = = = = = = = = = = = = *
      *          CONSTRUCTORS         *
      * = = = = = = = = = = = = = = = */
@@ -36,10 +33,6 @@ public class Ingredient {
         this.price = price;
     }
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
-
 
     /* = = = = = = = = = = = = = = = *
      *            GETTERS            *
@@ -55,10 +48,6 @@ public class Ingredient {
 
     public float getPrice() {
         return price;
-    }
-
-    public boolean isSelected() {
-        return selected;
     }
 
     /* = = = = = = = = = = = = = = = *
