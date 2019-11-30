@@ -2,7 +2,8 @@
 
     <!-- APP SPECIFIC -->
 
-    <string name="app_name">DeliveryApp</string>
+    <string name="app_name">Delivery</string>
+    <string name="app_full_name">Nightwall Delivery</string>
 
     <string name="email_recipient">veropizzaapp@gmail.com</string>
     <string name="email_subject_new_order">Vero App | Νέα παραγγελία</string>

@@ -2,16 +2,24 @@ package gr.nightwall.deliveryapp.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Stack;
 
 import gr.nightwall.deliveryapp.App;
 import gr.nightwall.deliveryapp.R;
+import gr.nightwall.deliveryapp.models.screens.Screen;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA;
-import static gr.nightwall.deliveryapp.utils.Consts.ITEM_EXTRA_2;
 
 public class Navigation {
+
+    //region ACTIVITIES
 
     public static void startActivity(Class newClass){
         Context context = App.getContext();
@@ -36,6 +44,8 @@ public class Navigation {
 
         context.startActivity(intent);
     }
+
+    //endregion
 
     public static void errorToast(Context context){
         Toast.makeText(context, context.getString(R.string.error_something_went_wrong), Toast.LENGTH_SHORT).show();

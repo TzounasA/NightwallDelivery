@@ -8,10 +8,7 @@
     tools:context=".activities.MainActivity">
 
     <include
+        android:id="@+id/topBar"
         layout="@layout/screen_base"/>
-
-    <include
-        android:id="@+id/lProfile"
-        layout="@layout/screen_profile"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

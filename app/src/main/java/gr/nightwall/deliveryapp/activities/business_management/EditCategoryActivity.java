@@ -36,7 +36,7 @@ public class EditCategoryActivity extends AppCompatActivity {
     private Category category;
     private ArrayList<Item> items;
 
-    //Views
+    // Views
     private ViewGroup linePriority, lineName, lineDescription;
 
     private ViewGroup savingIndicator;

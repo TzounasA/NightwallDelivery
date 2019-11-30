@@ -32,6 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import gr.nightwall.deliveryapp.R;
 import gr.nightwall.deliveryapp.interfaces.OnActionListener;
 import gr.nightwall.deliveryapp.interfaces.OnInputPositiveClickListener;
+import gr.nightwall.deliveryapp.utils.AnimationHelper;
 import gr.nightwall.deliveryapp.utils.Utils;
 
 public class CustomDialog {
@@ -213,22 +214,14 @@ public class CustomDialog {
         if (cardDialog.getHeight() == 0) return;
 
         // Animation
-        YoYo.with(Techniques.FadeInUp)
-                .duration(150)
-                .onStart(animator -> {
-                    dialogView.setVisibility(View.VISIBLE);
-                    cardDialog.setVisibility(View.VISIBLE);
-                    parent.setVisibility(View.VISIBLE);
+        AnimationHelper.openDialog(cardDialog, shadowBack, v ->{
+            dialogView.setVisibility(View.VISIBLE);
+            cardDialog.setVisibility(View.VISIBLE);
+            parent.setVisibility(View.VISIBLE);
 
-                    openDialog = CustomDialog.this;
-                    isOpen = true;
-                })
-                .playOn(cardDialog);
-
-        YoYo.with(Techniques.FadeIn)
-                .duration(200)
-                .interpolate(new AccelerateInterpolator())
-                .playOn(shadowBack);
+            openDialog = CustomDialog.this;
+            isOpen = true;
+        });
     }
 
     public void closeDialog(Context context) {
@@ -236,25 +229,17 @@ public class CustomDialog {
         View shadowBack = dialogView.findViewById(R.id.shadowBack);
 
         // Animation
-        YoYo.with(Techniques.FadeOutDown)
-                .duration(100)
-                .onEnd(animator -> {
-                    dialogView.setVisibility(View.GONE);
-                    parent.setVisibility(View.GONE);
-                    parent.removeAllViews();
+        AnimationHelper.closeDialog(cardDialog, shadowBack, v ->{
+            dialogView.setVisibility(View.GONE);
+            parent.setVisibility(View.GONE);
+            parent.removeAllViews();
 
-                    openDialog = null;
-                    isOpen = false;
+            openDialog = null;
+            isOpen = false;
 
-                    if (onCloseListener != null)
-                        onCloseListener.onActionClick(CustomDialog.this);
-                })
-                .playOn(cardDialog);
-
-        YoYo.with(Techniques.FadeOut)
-                .duration(100)
-                .interpolate(new DecelerateInterpolator())
-                .playOn(shadowBack);
+            if (onCloseListener != null)
+                onCloseListener.onActionClick(CustomDialog.this);
+        });
 
         Utils.closeSoftKeyboard(context);
     }
