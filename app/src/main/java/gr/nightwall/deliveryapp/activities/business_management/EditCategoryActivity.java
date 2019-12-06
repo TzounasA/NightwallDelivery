@@ -191,7 +191,7 @@ public class EditCategoryActivity extends AppCompatActivity {
     }
 
     private void setupItems() {
-        adapter = new ItemsAdapter(this, Utils.sortItems(items));
+        adapter = new ItemsAdapter(this, Utils.sortItems(items), false);
         adapter.setOnItemClick(new OnSettingClickListener() {
             @Override
             public void onActionClick(int index) {

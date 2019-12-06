@@ -42,14 +42,15 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
-    <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="dialogCornerRadius">@dimen/card_corner_radius</item>
-        <item name="dialogPreferredPadding">0dp</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+    </style>
+
+    <style name="AppTheme.Dialog.Fullscreen" parent="AppTheme.Card">
+        <item name="cardCornerRadius">@dimen/fullscreen_dialog_corner_radius</item>
+        <item name="cardElevation">@dimen/dialog_elevation</item>
     </style>
 
     <style name="AppTheme.Transparent" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -221,28 +222,32 @@
         <item name="backgroundTint">@color/colorError</item>
     </style>
 
-    <style name="AppTheme.ActionButton" parent="AppTheme.TextButton">
+    <style name="AppTheme.ActionButton" parent="AppTheme.IconButton">
         <item name="cornerRadius">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
+        <item name="iconPadding">16dp</item>
     </style>
 
     <style name="AppTheme.ActionButton.Positive" parent="AppTheme.ActionButton">
         <item name="android:textColor">@color/onPrimary</item>
         <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="iconTint">@color/onPrimary</item>
         <item name="rippleColor">@color/white</item>
     </style>
 
     <style name="AppTheme.ActionButton.Negative" parent="AppTheme.ActionButton">
         <item name="android:textColor">@color/onError</item>
         <item name="backgroundTint">@color/colorError</item>
+        <item name="iconTint">@color/onError</item>
         <item name="rippleColor">@color/black_54</item>
     </style>
 
     <style name="AppTheme.ActionButton.Cancel" parent="AppTheme.ActionButton">
         <item name="android:textColor">@color/onBackground</item>
         <item name="backgroundTint">@color/black_10</item>
+        <item name="iconTint">@color/onBackground</item>
         <item name="rippleColor">@color/colorPrimary</item>
     </style>
 

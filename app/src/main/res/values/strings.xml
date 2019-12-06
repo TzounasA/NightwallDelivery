@@ -8,7 +8,8 @@
     <string name="email_recipient">veropizzaapp@gmail.com</string>
     <string name="email_subject_new_order">Vero App | Νέα παραγγελία</string>
 
-    <!-- APP SPECIFIC -->
+    <!--  -->
+
 
     <string name="channel_foreground">@string/app_name</string>
     <string name="channel_foreground_text">Η εφαρμογή τρέχει στο παρασκήνιο</string>

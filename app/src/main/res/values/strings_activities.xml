@@ -10,6 +10,11 @@
     <string name="order_history_description">Δείτε το ιστορικό σας</string>
 
 
+    <!-- BUY ITEM DIALOG -->
+    <string name="add_to_cart_text">Στο καλάθι (%s €)</string>
+    <string name="x_items">%d προϊόντα</string>
+    <string name="one_item">1 προϊόν</string>
+    <string name="cart_is_empty">Το καλάθι είναι άδειο</string>
 
 
 
@@ -93,6 +98,8 @@
     <string name="new_password">Νέος κωδικός</string>
 
 
+
+
     <!-- MENU -->
     <string name="all">Όλα</string>
     <string name="id_x">ID: %s</string>
@@ -111,7 +118,6 @@
     <string name="empty_cart_caps">ΑΔΕΙΑΣΜΑ ΚΑΛΑΘΙΟΥ</string>
     <string name="empty_cart">Άδειασμα καλαθιού</string>
     <string name="empty_cart_text">Όλα τα προϊόντα θα διαγραφούν από το καλάθι σας</string>
-    <string name="cart_is_empty">Το καλάθι σας είναι άδειο</string>
     <string name="x_to_min_order_price">Ακόμα %.02f€ για την ελάχιστη χρέωση</string>
 
 

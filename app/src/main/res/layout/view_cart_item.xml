@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.CardView"
+    android:id="@+id/lPreview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- Item Icon -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivItemIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="center"
+                android:tint="@color/colorAccent"
+                app:srcCompat="@drawable/ic_food_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="1dp"
+                android:src="@color/colorAccent10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Item Image -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivItemImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:visibility="gone"
+                tools:src="@mipmap/ic_launcher_round"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Item Name -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                style="@style/AppTheme.TextAppearance.Headline6"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintTop_toTopOf="@id/ivItemIcon"
+                app:layout_constraintBottom_toBottomOf="@id/ivItemIcon"
+                app:layout_constraintStart_toEndOf="@id/ivItemIcon"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                tools:text="Λουκουμάδες κλασικοί"/>
+
+            <!-- Button Delete -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                android:layout_marginEnd="12dp"
+                style="@style/AppTheme.IconButton"
+                android:gravity="center"
+                app:iconGravity="textStart"
+                app:icon="@drawable/ic_delete_24"
+                app:iconTint="@color/colorError"
+                app:rippleColor="@color/colorError"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvCategoryName"
+                style="@style/AppTheme.TextAppearance.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                tools:text="Πίτσες"
+                app:layout_constraintTop_toBottomOf="@+id/ivItemIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <!-- Item Price -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemPriceText"
+                style="@style/AppTheme.TextAppearance.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvCategoryName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/item_price"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemPrice"
+                style="@style/AppTheme.TextAppearance.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPriceText"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPriceText"
+                app:layout_constraintStart_toEndOf="@+id/tvItemPriceText"
+                tools:text="2.5 €"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tvItemPriceText,tvItemPrice" />
+
+            <!-- Discount Price -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/dot"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@color/colorAccent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDiscountPriceText"
+                style="@style/AppTheme.TextAppearance.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvCategoryName"
+                app:layout_constraintEnd_toStartOf="@id/tvDiscountPrice"
+                android:text="@string/discount_price"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDiscountPrice"
+                style="@style/AppTheme.TextAppearance.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="@+id/tvDiscountPriceText"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDiscountPriceText"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/colorError"
+                tools:text="-2.5 €"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tvDiscountPriceText,dot,tvDiscountPrice" />
+
+            <!-- Ingredients Price -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIngredientsPriceText"
+                style="@style/AppTheme.TextAppearance.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemPriceText"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/ingredients_price"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIngredientsPrice"
+                style="@style/AppTheme.TextAppearance.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/tvIngredientsPriceText"
+                app:layout_constraintBottom_toBottomOf="@+id/tvIngredientsPriceText"
+                app:layout_constraintStart_toEndOf="@+id/tvIngredientsPriceText"
+                tools:text="2.5 €"/>
+
+            <!-- Ingredients -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIngredients"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                style="@style/AppTheme.TextAppearance.Body2"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvIngredientsPriceText"
+                tools:text="Options"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tvIngredientsPriceText,tvIngredientsPrice,tvIngredients" />
+
+            <!-- Recycler View Offer Items -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvOfferItems"
+                app:layout_constraintTop_toBottomOf="@+id/tvIngredients"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Additional Info -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdditionalInfoTitle"
+                style="@style/AppTheme.TextAppearance.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_goneMarginTop="4dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/rvOfferItems"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/additional_info"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdditionalInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/AppTheme.TextAppearance.Body2"
+                android:alpha="0.7"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdditionalInfoTitle"
+                tools:text="Additional info"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupAdditionalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tvAdditionalInfoTitle,tvAdditionalInfo" />
+
+
+            <!-- Quantity -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnRemoveQuantity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/button_icon"
+                app:srcCompat="@drawable/ic_remove_24"
+                android:tint="@color/colorAccent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdditionalInfo"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTheme.TextAppearance.Headline5"
+                tools:text="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintTop_toTopOf="@id/btnRemoveQuantity"
+                app:layout_constraintBottom_toBottomOf="@id/btnRemoveQuantity"
+                app:layout_constraintStart_toEndOf="@id/btnRemoveQuantity" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnAddQuantity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/button_icon"
+                app:srcCompat="@drawable/ic_add_24"
+                android:tint="@color/colorAccent"
+                app:layout_constraintStart_toEndOf="@id/tvQuantity"
+                app:layout_constraintTop_toTopOf="@id/btnRemoveQuantity" />
+
+            <!-- Final Price -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFinalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTheme.TextAppearance.Headline5"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                tools:text="3.5 €"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdditionalInfo"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

@@ -27,6 +27,7 @@
     <color name="colorPrimary20">#338B0305</color>
     <color name="colorPrimary35">#598b0305</color>
     <color name="colorPrimary54">#8A8b0305</color>
+    <color name="colorPrimary90">#E68B0305</color>
 
     <color name="colorAccentLight10">#1AB8211C</color>
     <color name="colorAccentLight20">#33B8211C</color>
@@ -43,6 +44,7 @@
     <color name="onBackground_70">#B2000000</color>
     <color name="onPrimary54">#8AFFFFFF</color>
     <color name="onPrimary70">#B3FFFFFF</color>
+    <color name="onPrimary30">#4DFFFFFF</color>
     <color name="onSecondary54">#8AFFFFFF</color>
 
     <color name="onSurface60">#99000000</color>

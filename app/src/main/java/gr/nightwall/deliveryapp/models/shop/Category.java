@@ -17,6 +17,8 @@ public class Category {
 
     //private Type categoryType;
 
+    private boolean isSelected; // For previewing
+
     
     /* = = = = = = = = = = = = = = = *
      *          CONSTRUCTORS         *
@@ -66,6 +68,10 @@ public class Category {
         this.visible = visible;
     }
 
+    @Exclude
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     /* = = = = = = = = = = = = = = = *
      *              EDITS            *
@@ -124,6 +130,10 @@ public class Category {
         return visible;
     }
 
+    @Exclude
+    public boolean isSelected() {
+        return isSelected;
+    }
 
     /* = = = = = = = = = = = = = = = *
      *         GET MORE INFO         *

@@ -111,6 +111,34 @@ public class FirebaseDB {
         });
     }
 
+    public static <T> void getItemById(Reference db, String id, Class<T> itemClass, OnGetItemListener onGetItemListener){
+        DatabaseReference reference = getReference(db);
+
+        if (reference == null) {
+            onGetItemListener.onFail();
+            return;
+        }
+
+        reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                T item = dataSnapshot.getValue(itemClass);
+
+                if (item == null) {
+                    onGetItemListener.onFail();
+                    return;
+                }
+
+                onGetItemListener.onSuccess(item);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                onGetItemListener.onFail();
+            }
+        });
+    }
+
     public static <T> void getList(Reference db, Class<T> itemClass, OnGetListListener onGetListListener){
         DatabaseReference reference = getReference(db);
 

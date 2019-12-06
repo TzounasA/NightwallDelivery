@@ -172,6 +172,11 @@ public class Item {
         return startPrice + ingredientsPrice;
     }
 
+    @Exclude
+    public float getTotalItemsPrice(){
+        return getFinalPrice() * quantity;
+    }
+
     //endregion
 
     //region GET MORE INFO
@@ -209,6 +214,16 @@ public class Item {
     @Exclude
     public String getFinalPriceFormatted(){
         return String.format(Locale.US, "%.2f", getFinalPrice());
+    }
+
+    @Exclude
+    public String getTotalItemsString(){
+        return String.format(Locale.getDefault(), "%.2f €", getTotalItemsPrice());
+    }
+
+    @Exclude
+    public String getTotalItemsFormatted(){
+        return String.format(Locale.US, "%.2f", getTotalItemsPrice());
     }
 
     //endregion

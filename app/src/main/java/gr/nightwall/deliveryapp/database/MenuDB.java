@@ -23,8 +23,8 @@ public class MenuDB {
         FirebaseDB.getList(ITEM_TEMPLATES, ItemTemplate.class, onGetListListener);
     }
 
-    public static void getItemTemplateByID(String id){
-
+    public static void getItemTemplateByID(String id, OnGetItemListener onGetItemListener){
+        FirebaseDB.getItemById(ITEM_TEMPLATES, id, ItemTemplate.class, onGetItemListener);
     }
 
     //endregion
@@ -33,6 +33,10 @@ public class MenuDB {
 
     public static void saveItem(Item item, OnSaveDataListener onSaveDataListener){
         FirebaseDB.saveItemWithId(ITEMS, item, item.getId(), onSaveDataListener);
+    }
+
+    public static void getAllItems(OnGetListListener onGetListListener){
+        FirebaseDB.getList(ITEMS, Item.class, "priorityNumber", onGetListListener);
     }
 
     public static void getItemsOfCategory(String categoryId, OnGetListListener onGetListListener){

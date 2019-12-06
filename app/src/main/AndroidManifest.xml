@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.ProfileActivity"/>
+        <activity android:name=".activities.CartActivity"/>
+        <activity android:name=".activities.BuyItemDialog" />
+        <activity android:name=".activities.ProfileActivity" />
         <activity
             android:name=".activities.business_management.EditItemActivity"
             android:label="@string/edit_item"

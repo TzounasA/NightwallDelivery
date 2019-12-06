@@ -25,6 +25,8 @@ import gr.nightwall.deliveryapp.utils.Navigation;
 import gr.nightwall.deliveryapp.utils.Utils;
 import gr.nightwall.deliveryapp.views.CustomDialog;
 
+import static gr.nightwall.deliveryapp.adapters.CategoriesAdapter.CategoriesViewType.EDIT;
+
 public class CategoriesActivity extends AppCompatActivity {
 
     // Data
@@ -111,7 +113,7 @@ public class CategoriesActivity extends AppCompatActivity {
     //region PRINT PAGE
 
     private void printList(){
-        adapter = new CategoriesAdapter(this, categories);
+        adapter = new CategoriesAdapter(this, categories, EDIT);
         adapter.setOnItemClick(new OnSettingClickListener() {
             @Override
             public void onActionClick(int index) {

@@ -12,34 +12,34 @@ public class Cart {
     public Cart() {}
 
     // EDIT
-    public void addItem(Item item){
+    public void add(Item item){
         checkIfNull();
         itemsInCart.add(item);
     }
 
-    public void removeItemAt(int index){
+    public void removeAt(int index){
         checkIfNull();
         itemsInCart.remove(index);
     }
 
-    public void removeItem(Item item){
+    public void remove(Item item){
         checkIfNull();
         itemsInCart.remove(item);
     }
 
     public void increaseQuantity(int index){
         checkIfNull();
-        if (getItemsCount() > index)
+        if (itemsInCart.size() > index)
             itemsInCart.get(index).increaseQuantity();
     }
 
     public void decreaseQuantity(int index){
         checkIfNull();
-        if (getItemsCount() > index)
+        if (itemsInCart.size() > index)
             itemsInCart.get(index).decreaseQuantity();
     }
 
-    public void emptyCart(){
+    public void empty(){
         checkIfNull();
         itemsInCart.clear();
     }
@@ -48,36 +48,6 @@ public class Cart {
     public ArrayList<Item> getItemsInCart() {
         checkIfNull();
         return (ArrayList<Item>) itemsInCart;
-    }
-
-    public Item getItemAt(int index){
-        checkIfNull();
-        if (getItemsCount() > index)
-            return itemsInCart.get(index);
-        return null;
-    }
-
-    public int getItemsCount(){
-        checkIfNull();
-        int count = 0;
-        for (Item item : itemsInCart) {
-            count += item.getQuantity();
-        }
-        return count;
-    }
-
-    public double getTotalPrice(){
-        double finalPrice = 0;
-
-        for (Item item : itemsInCart) {
-            finalPrice += item.getFinalPrice() * item.getQuantity();
-        }
-
-        return finalPrice;
-    }
-
-    public String getTotalPriceString(){
-        return String.format(Locale.getDefault(), "%.2f €", getTotalPrice());
     }
 
     public boolean isEmpty(){

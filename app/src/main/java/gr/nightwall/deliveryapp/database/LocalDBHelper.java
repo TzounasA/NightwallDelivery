@@ -57,6 +57,9 @@ public class LocalDBHelper {
         Gson gson = new Gson();
 
         String json = getPreferences().getString(PREF_CART, null);
+        if (json == null){
+            return new Cart();
+        }
         return gson.fromJson(json, Cart.class);
     }
 

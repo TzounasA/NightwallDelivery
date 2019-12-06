@@ -66,6 +66,13 @@ public class Utils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    /* = = = = = = = = = = = = = = = *
+     *           RESOURCES           *
+     * = = = = = = = = = = = = = = = */
+
+    public static int getColor(Context context, int colorRes){
+        return context.getResources().getColor(colorRes);
+    }
 
     /* = = = = = = = = = = = = = = = *
      *             LISTS             *
@@ -78,6 +85,9 @@ public class Utils {
     }
 
     public static ArrayList<Item> sortItems(ArrayList<Item> items){
+        if(items == null)
+            return new ArrayList<>();
+
         Item temp;
 
         for (int x = 0; x < items.size(); x++)
@@ -158,6 +168,13 @@ public class Utils {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+    }
+
+    public static void initHorizontalRecyclerView(Context context,
+                                        RecyclerView recyclerView, RecyclerView.Adapter adapter){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
