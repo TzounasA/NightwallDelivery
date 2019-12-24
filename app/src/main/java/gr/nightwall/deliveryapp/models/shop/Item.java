@@ -16,7 +16,7 @@ public class Item {
     //region Private fields
 
     private String id, name;
-    private String categoryId;
+    private String categoryId, categoryName;
 
     private float startPrice;
     private String priorityNumber;
@@ -47,9 +47,10 @@ public class Item {
         ingredientsNames = new HashMap<>();
     }
 
-    public Item(String categoryId, String priority){
+    public Item(String categoryId, String categoryName, String priority){
         this();
         this.categoryId = categoryId;
+        this.categoryName = categoryName;
         priorityNumber = priority;
     }
 
@@ -117,6 +118,10 @@ public class Item {
 
     public String getCategoryId() {
         return categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public String getName() {
@@ -298,7 +303,7 @@ public class Item {
     }
 
     @Exclude
-    public String getAllSelectedIngredients(){
+    public String getAllIngredientsString(){
         try {
             if (ingredientsNames == null)
                 return "";
@@ -330,6 +335,19 @@ public class Item {
         }
 
         return ingredientsBuilder.substring(0, ingredientsBuilder.length() - 1);
+    }
+
+    public int getAllIngredientsCount(){
+        if (ingredientsNames == null)
+            ingredientsNames = new HashMap<>();
+
+        int counter = 0;
+        Set<String> categories = ingredientsNames.keySet();
+        for (String category : categories){
+            counter += ingredientsNames.get(category).size();
+        }
+
+        return counter;
     }
 
     //endregion

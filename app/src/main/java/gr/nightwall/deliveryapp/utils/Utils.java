@@ -167,7 +167,7 @@ public class Utils {
                                         RecyclerView recyclerView, RecyclerView.Adapter adapter){
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
     }
 

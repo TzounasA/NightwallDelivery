@@ -218,7 +218,7 @@ public class EditCategoryActivity extends AppCompatActivity {
 
     public void addNewItem(View view) {
         String priority = Utils.getPriorityFromListCount(items.size());
-        openItem(new Item(category.getId(), priority));
+        openItem(new Item(category.getId(), category.getName(), priority));
     }
 
     private void onDeleteItem(int index) {

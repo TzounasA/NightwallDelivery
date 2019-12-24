@@ -20,7 +20,7 @@ public class CartManager {
         cart = LocalDBHelper.getCart();
     }
 
-    private void save(){
+    public void save(){
         LocalDBHelper.saveCart(cart);
     }
 

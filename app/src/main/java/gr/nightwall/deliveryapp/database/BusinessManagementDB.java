@@ -20,6 +20,10 @@ public class BusinessManagementDB {
         FirebaseDB.getItem(BUSINESS_SETTINGS, BusinessSettings.class, onGetItemListener);
     }
 
+    public static void getMinimumOrderPrice(OnGetItemListener onGetItemListener){
+        FirebaseDB.getItemById(BUSINESS_SETTINGS, "minimumOrderPrice", Double.class, onGetItemListener);
+    }
+
     // Users
     public static void saveUser(User user){
 

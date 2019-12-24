@@ -115,9 +115,9 @@
                 tools:text="2.30 €"
                 android:gravity="center"
                 android:layout_marginBottom="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toTopOf="@id/btnToCart"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
                 android:id="@+id/quantityPicker"
@@ -138,9 +138,9 @@
                 app:snp_updateInterval="100"
                 app:snp_value="1"
                 android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/btnToCart"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <!-- Add to cart Button -->
             <Button

@@ -12,12 +12,21 @@
 
     <!-- BUY ITEM DIALOG -->
     <string name="add_to_cart_text">Στο καλάθι (%s €)</string>
-    <string name="x_items">%d προϊόντα</string>
     <string name="one_item">1 προϊόν</string>
     <string name="cart_is_empty">Το καλάθι είναι άδειο</string>
 
 
-
+    <!-- CART -->
+    <string name="cart">Το καλάθι μου</string>
+    <string name="continue_order">Συνέχεια παραγγελίας</string>
+    <string name="item_price">Αρχική τιμή:</string>
+    <string name="discount_price">Έκπτωση:</string>
+    <string name="ingredients_price">Επιλογές:</string>
+    <string name="x_items">%d προϊόντα</string>
+    <string name="total_x_items">Συνολικά %d προϊόντα</string>
+    <string name="empty_cart">Άδειασμα καλαθιού</string>
+    <string name="empty_cart_text">Όλα τα προϊόντα θα διαγραφούν από το καλάθι σας</string>
+    <string name="x_to_min_order_price">-%.02f€ για την ελάχιστη</string>
 
 
 
@@ -72,7 +81,6 @@
     <!-- MAIN DRAWER -->
     <string name="profile">Το προφίλ μου</string>
     <string name="menu">Κατάλογος</string>
-    <string name="cart">Καλάθι</string>
     <string name="about">Σχετικά με εμάς</string>
     <string name="settings">Ρυθμίσεις</string>
     <string name="other">Άλλα</string>
@@ -98,8 +106,6 @@
     <string name="new_password">Νέος κωδικός</string>
 
 
-
-
     <!-- MENU -->
     <string name="all">Όλα</string>
     <string name="id_x">ID: %s</string>
@@ -108,17 +114,6 @@
     <string name="back">ΠΙΣΩ</string>
     <string name="loading">Φορτώνει…</string>
 
-
-    <!-- CART -->
-    <string name="item_price">Αρχική τιμή:</string>
-    <string name="discount_price">Έκπτωση:</string>
-    <string name="ingredients_price">Επιλογές:</string>
-    <string name="continue_order">ΣΥΝΕΧΕΙΑ</string>
-    <string name="total_x_items">Συνολικά %d προϊόντα</string>
-    <string name="empty_cart_caps">ΑΔΕΙΑΣΜΑ ΚΑΛΑΘΙΟΥ</string>
-    <string name="empty_cart">Άδειασμα καλαθιού</string>
-    <string name="empty_cart_text">Όλα τα προϊόντα θα διαγραφούν από το καλάθι σας</string>
-    <string name="x_to_min_order_price">Ακόμα %.02f€ για την ελάχιστη χρέωση</string>
 
 
     <!-- COMPLETE ORDER -->
